@@ -70,6 +70,29 @@
 		<!--============================= WELCOME TITLE =============================-->
 		<section class="welcome_about">
 			<div class="container">
+				
+				<div class="row">
+					<div class="col-md-7">
+						<h2>Profil Sekolah</h2>
+					<p>
+					Nama Sekolah		: SMA KRISTEN KONDO SAPATA MAKASSAR<br>
+					Nomor Induk Sekolah	: 5.22.114008<br>
+					Nomor Statistik		: 302196008053<br>
+					Provinsi			: Sulawesi Selatan<br>
+					Desa/Kelurahan		: Maradekaya Selatan<br>
+					Kode Pos		: 90141<br>
+					Telepon		: (0411)-3631405<br>
+					Daerah			: Perkotaan<br>
+					Status Sekolah		: Swasta<br>
+					Penerbit SK		: 1983<br>
+					Tahun Berdiri		: 1984<br>
+
+					</p>
+					</div>
+					<div class="col-md-5">
+						<img src="images/welcome-img.jpg" class="img-fluid" alt="#">
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Visi dan Misi Sekolah</h2>
@@ -91,27 +114,6 @@
 					<!-- <div class="col-md-5">
 						<img src="images/welcome-img.jpg" class="img-fluid" alt="#">
 					</div> -->
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Profil Sekolah</h2>
-					<p>
-					Nama Sekolah		: SMA KRISTEN KONDO SAPATA MAKASSAR<br>
-					Nomor Induk Sekolah	: 5.22.114008<br>
-					Nomor Statistik		: 302196008053<br>
-					Provinsi			: Sulawesi Selatan<br>
-					Desa/Kelurahan		: Maradekaya Selatan<br>
-					Kesamatan		: Makassar<br>
-					Jalan dan Nomor	: Jl.Sungai Saddang II No. 5<br>
-					Kode Pos		: 90141<br>
-					Telepon		: (0411)-3631405<br>
-					Daerah			: Perkotaan<br>
-					Status Sekolah		: Swasta<br>
-					Penerbit SK		: 1983<br>
-					Tahun Berdiri		: 1984<br>
-
-					</p>
-					</div>
 				</div>
 			</div>
 		</section>

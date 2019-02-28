@@ -26,9 +26,10 @@
                 <div class="col-md-4">
                     <div class="address">
                         <h3>Contact us</h3>
-                        <p><span>Address: </span> Unisco university Albany, NY, USA. 11001</p>
-                        <p>Email : info@unisco.com
-                            <br> Phone : +91 555 668 986</p>
+                        <p> Makassar Jl.Sungai Saddang II No. 5</p>
+                        <p>
+                            (0411)-3631405
+                        </p>
                     </div>
                 </div>
             </div>

@@ -133,7 +133,13 @@
 
                                 <div class="tab-pane active" id="nilai" role="tabpanel">
                                     <div class="row">
+                                    
                                         <div class="col-lg-12">
+                                        <a href='Input_Nilai.php'>
+                                            <button class="btn btn-info btn-info col-lg-12">
+                                                <i class="icofont icofont-add"></i>TAMBAH SEMESTER
+                                            </button>
+                                        </a>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <!-- contact data table card start -->
