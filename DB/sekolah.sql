@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2019 at 01:12 PM
+-- Generation Time: Mar 01, 2019 at 08:29 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -60,7 +60,9 @@ CREATE TABLE `galeri` (
 INSERT INTO `galeri` (`kd_foto`, `nama_foto`) VALUES
 (1, 'Anak-SMA.jpg'),
 (2, 'kenapa-sih-ngelarang-anak-sma-party-kelulusan-pikiran-mereka-kan-cuma-sesederhana-hal-hal-ini-aja-1493796759.jpg'),
-(3, 'Untitled-2-700x400.jpg');
+(32, '20180213_231736.jpg'),
+(33, '20180528_174111.jpg'),
+(35, 'IMG_20161106_233603.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,35 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`kd_guru`, `nip`, `nama`, `status`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
-(1, '1010', 'ito', '1', 'btp', 'soppeng', '1997-08-13', 'LAKI-LAKI', 'YDXJ0031.jpg');
+(1, '1010', 'ito', '4', 'btp', 'soppeng', '1997-08-13', 'LAKI-LAKI', 'YDXJ0031.jpg'),
+(2, '123', 'ilham', '3', 'gowa', 'bulkum', '0000-00-00', 'LAKI-LAKI', 'sop3.jpg'),
+(3, '152482', 'ANDRIYANA', '2', 'BTP BLOK I', 'GUNUNG', '0000-00-00', 'PEREMPUAN', 'user-img.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jawaban`
+--
+
+CREATE TABLE `jawaban` (
+  `kd_jawaban` int(11) NOT NULL,
+  `kd_siswa` int(11) NOT NULL,
+  `kd_tugas` int(11) NOT NULL,
+  `kd_kelas` int(11) NOT NULL,
+  `link` text NOT NULL,
+  `nilai_tugas` double NOT NULL DEFAULT '0',
+  `nama_file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jawaban`
+--
+
+INSERT INTO `jawaban` (`kd_jawaban`, `kd_siswa`, `kd_tugas`, `kd_kelas`, `link`, `nilai_tugas`, `nama_file`) VALUES
+(1, 1, 2, 0, 'google.com', 0, '2018 soal osk komputer.pdf'),
+(2, 1, 3, 2, 'https://www.google.com/', 0, 'bab5.pdf'),
+(3, 2, 3, 2, 'https://www.google.com/', 0, 'bab5.pdf'),
+(4, 1, 2, 2, 'https://www.google.com/', 0, 'salep kulit alpukat.docx');
 
 -- --------------------------------------------------------
 
@@ -126,12 +156,24 @@ CREATE TABLE `mapel` (
 --
 
 INSERT INTO `mapel` (`kd_mapel`, `nama_mapel`) VALUES
-(1, 'Matematika'),
-(2, 'TIK'),
+(2, 'Agama'),
+(13, 'Bahasa Indonesia'),
+(21, 'Bahasa Inggris I'),
 (3, 'BHS.INGGRIS'),
 (4, 'Biologi'),
-(5, 'Geografi'),
-(6, 'Sejarah');
+(11, 'Ekonomi'),
+(14, 'Fisika'),
+(12, 'Geografi'),
+(15, 'Kimia'),
+(18, 'KIRT'),
+(8, 'Matematika'),
+(19, 'Mulok'),
+(1, 'Penjas'),
+(10, 'PKN'),
+(5, 'Prakarya'),
+(17, 'Seni Budaya'),
+(6, 'Sosiologi'),
+(16, 'TIK');
 
 -- --------------------------------------------------------
 
@@ -173,18 +215,25 @@ CREATE TABLE `nilai_siswa` (
 --
 
 INSERT INTO `nilai_siswa` (`kd_nilai`, `kd_siswa`, `kd_mapel`, `nilai`, `kd_semester`) VALUES
-(1, 1, 1, 90, 2),
-(2, 1, 2, 89, 1),
-(3, 1, 4, 60, 2),
-(4, 1, 3, 34, 3),
-(5, 1, 6, 87, 2),
-(6, 1, 5, 56, 2),
-(7, 2, 2, 98, 1),
-(8, 2, 1, 10, 2),
-(9, 2, 3, 20, 2),
-(10, 2, 4, 30, 2),
-(11, 2, 5, 40, 2),
-(12, 2, 6, 50, 2);
+(394, 6, 0, 0, 1),
+(395, 6, 1, 0, 1),
+(396, 6, 2, 0, 1),
+(397, 6, 3, 0, 1),
+(398, 6, 4, 0, 1),
+(399, 6, 5, 0, 1),
+(400, 6, 6, 0, 1),
+(401, 6, 7, 0, 1),
+(402, 6, 8, 0, 1),
+(403, 6, 9, 0, 1),
+(404, 6, 10, 0, 1),
+(405, 6, 11, 0, 1),
+(406, 6, 12, 0, 1),
+(407, 6, 13, 0, 1),
+(408, 6, 14, 0, 1),
+(409, 6, 15, 0, 1),
+(410, 6, 16, 0, 1),
+(411, 6, 17, 0, 1),
+(412, 6, 18, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -232,12 +281,13 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`kd_siswa`, `kd_kelas`, `nis`, `nama`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
-(1, 1, '152246', 'ilhamT', 'btp', 'soppeng', '1997-04-16', 'LAKI-LAKI', 'sharpshooter-merc-bundle.jpg'),
-(2, 1, '152247', 'ito', 'btp', 'makassar', '1997-04-16', 'LAKI-LAKI', 'fletcher.jpg'),
-(4, 4, '152250', 'muhammad', 'antang', 'kalimantan', '0000-00-00', 'LAKI-LAKI', 'IMG-20180715-WA0013.jpg'),
+(1, 2, '152246', 'ilhamT', 'btp', 'soppeng', '1997-04-16', 'LAKI-LAKI', 'sharpshooter-merc-bundle.jpg'),
+(2, 2, '152247', 'ito', 'btp', 'makassar', '1997-04-16', 'LAKI-LAKI', 'fletcher.jpg'),
+(4, 3, '152250', 'muhammad', 'antang', 'kalimantan', '0000-00-00', 'LAKI-LAKI', 'IMG-20180715-WA0013.jpg'),
 (6, 4, '152251', 'muhammad', 'antang', 'kalimantan', '2019-02-05', 'LAKI-LAKI', 'IMG-20180715-WA0013.jpg'),
 (10, 4, '152245', 'nurul', 'malaka', 'soppeng', '0000-00-00', 'PEREMPUAN', 'f-3.jpg'),
-(12, 4, '152244', 'nurul', 'malaka', 'soppeng', '0000-00-00', 'PEREMPUAN', '20180304_195545.jpg');
+(12, 4, '152244', 'nurul', 'malaka', 'soppeng', '0000-00-00', 'PEREMPUAN', '20180304_195545.jpg'),
+(13, 4, '152243', 'ilham', 'gowa', 'bulkum', '0000-00-00', 'LAKI-LAKI', 'sop3.jpg');
 
 -- --------------------------------------------------------
 
@@ -256,7 +306,9 @@ CREATE TABLE `tugas` (
 --
 
 INSERT INTO `tugas` (`kd_tugas`, `nama_tugas`, `nama_file`) VALUES
-(2, 'Tugas 2', 'Soal Psikotest - Aritmatik.pdf');
+(2, 'Tugas 2', 'Soal Psikotest - Aritmatik.pdf'),
+(3, 'Tugas 4', 'KELENGKAPAN PENANDATANGANI REKOMENDASI PENGAWAS SEKOLAH DINAS PENDIDIKAN KABUPATEN SOPPENG.docx'),
+(4, 'Tugas 4', '3.pdf');
 
 -- --------------------------------------------------------
 
@@ -300,6 +352,12 @@ ALTER TABLE `guru`
   ADD PRIMARY KEY (`kd_guru`);
 
 --
+-- Indexes for table `jawaban`
+--
+ALTER TABLE `jawaban`
+  ADD PRIMARY KEY (`kd_jawaban`);
+
+--
 -- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
@@ -309,7 +367,8 @@ ALTER TABLE `kelas`
 -- Indexes for table `mapel`
 --
 ALTER TABLE `mapel`
-  ADD PRIMARY KEY (`kd_mapel`);
+  ADD PRIMARY KEY (`kd_mapel`),
+  ADD UNIQUE KEY `nama_mapel` (`nama_mapel`);
 
 --
 -- Indexes for table `materi`
@@ -362,13 +421,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `kd_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `guru`
 --
 ALTER TABLE `guru`
-  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `jawaban`
+--
+ALTER TABLE `jawaban`
+  MODIFY `kd_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kelas`
@@ -380,7 +445,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `mapel`
 --
 ALTER TABLE `mapel`
-  MODIFY `kd_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kd_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `materi`
@@ -392,7 +457,7 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
-  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
 
 --
 -- AUTO_INCREMENT for table `semester`
@@ -404,13 +469,13 @@ ALTER TABLE `semester`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `kd_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `kd_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `kd_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wali_kelas`
