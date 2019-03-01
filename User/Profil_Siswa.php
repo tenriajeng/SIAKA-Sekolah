@@ -135,37 +135,50 @@
                                     <div class="row">
                                     
                                         <div class="col-lg-12">
-                                        <a href='Input_Nilai.php'>
+                                        <?php
+                                        $smt = "SELECT MAX(nilai_siswa.kd_semester) 
+                                        FROM nilai_siswa 
+                                        INNER JOIN siswa ON siswa.kd_siswa = nilai_siswa.kd_siswa
+                                        WHERE siswa.kd_siswa = $kd";
+
+                                        $jml = 0;
+                                        $r=mysqli_query($db,$smt);
+
+                                        while ($rr=mysqli_fetch_array($r)){
+                                            $jml = $rr['MAX(nilai_siswa.kd_semester)'];
+
+                                        }
+                                        if( ($jml<6)){
+                                        ?>
+                                        <a href='PTambah_Semester.php?id=<?=$kd?>'>
                                             <button class="btn btn-info btn-info col-lg-12">
                                                 <i class="icofont icofont-add"></i>TAMBAH SEMESTER
                                             </button>
                                         </a>
+                                        <?php
+                                        }
+                                        ?>
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <!-- contact data table card start -->
                                                     <?php
-                                                    $smt = "SELECT MAX(nilai_siswa.kd_semester) 
-                                                    FROM nilai_siswa 
-                                                    INNER JOIN siswa ON siswa.kd_siswa = nilai_siswa.kd_siswa
-                                                    WHERE siswa.kd_siswa = $kd";
-
-                                                    $jml = 0;
-                                                    $r=mysqli_query($db,$smt);
-
-                                                    while ($rr=mysqli_fetch_array($r)){
-                                                        $jml = $rr['MAX(nilai_siswa.kd_semester)'];
-
-                                                    }
+                                                    
+                                                    
                                                     for(  ;$jml >=1;$jml--){
                                                     ?>
                                                     <div class="card">
                                                         <div class="card-header">
-                                                        <a href='Input_Nilai.php'>
-                                                            <button class="btn btn-primary btn-primary  waves-effect waves-light f-right">
-                                                                <i class="icofont icofont-contact-add"></i>Input Nilai
-                                                            </button>
-                                                        </a>
-                                                        <h5 class="card-header-text">Daftar Nilai Semester <?php echo $jml; ?></h5></div>
+                                                        
+                                                            <h5>Daftar Nilai Semester <?php echo $jml; ?></h5>
+                                                            <div class="card-header-right">
+                                                                <a href="Input_Nilai.php">
+                                                                    <button class="btn btn-primary ">
+                                                                        <i class="icofont icofont-upload"> Input Nilai </i>
+                                                                    </button>
+                                                                </a>
+                                                                <i class="icofont icofont-rounded-down"></i>
+                                                            </div>
+                                                        </div>
                                                             
                                                         <div class="card-block contact-details">
                                                             <div class="data_table_main table-responsive dt-responsive">
@@ -237,10 +250,10 @@
                                     <!-- personal card start -->
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="card-header-text">About Me</h5>
-                                            <button type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right">
-                                                <i class="icofont icofont-edit"></i>
-                                            </button>
+                                            <h5 class="card-header-text">Biodata</h5>
+                                            <div class="card-header-right">
+                                                <i class="icofont icofont-rounded-down"></i>
+                                            </div>
                                         </div>
                                         <div class="card-block">
                                             <div class="view-info">
@@ -250,27 +263,27 @@
                                                             <div class="row">
                                                                 <div class="col-lg-12 col-xl-6">
                                                                     <table class="table m-0">
+                                                                    <?php
+                                                                        $sql= "SELECT kd_kelas, nis, nama, alamat, tmp_lahir, tgl_lahir, jns_kelamin, foto_profil FROM siswa WHERE kd_siswa=$kd";
+                                                                        $result=mysqli_query($db,$sql);
+                                                                        $a=1;
+                                                                        $row=mysqli_fetch_array($result);
+                                                                    ?>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th scope="row">Full Name</th>
-                                                                                <td>Josephine Villa</td>
+                                                                                <th scope="row">Nama Lengkap</th>
+                                                                                <td><?=$row['nama']?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Gender</th>
-                                                                                <td>Female</td>
+                                                                                <th scope="row">Nomor Induk</th>
+                                                                                <td><?=$row['nis'];?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Birth Date</th>
-                                                                                <td>October 25th, 1990</td>
+                                                                                <th scope="row">Jenis Kelamin</th>
+                                                                                <td><?=$row['jns_kelamin']?></td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Marital Status</th>
-                                                                                <td>Single</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Location</th>
-                                                                                <td>New York, USA</td>
-                                                                            </tr>
+                                                                            
+                                                                            
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -279,24 +292,16 @@
                                                                     <table class="table">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th scope="row">Email</th>
-                                                                                <td><a href="#!">Demo@phenix.com</a></td>
+                                                                                <th scope="row">Tanggal Lahir</th>
+                                                                                <td><?=$row['tgl_lahir']?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Mobile Number</th>
-                                                                                <td>(0123) - 4567891</td>
+                                                                                <th scope="row">Alamat</th>
+                                                                                <td><?=$row['alamat']?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="row">Twitter</th>
-                                                                                <td>@phoenixcoded</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Skype</th>
-                                                                                <td>phoenixcoded.demo</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <th scope="row">Website</th>
-                                                                                <td><a href="#!">www.demo.com</a></td>
+                                                                                <th scope="row">Tempat Lahir</th>
+                                                                                <td><?=$row['tmp_lahir']?></td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
