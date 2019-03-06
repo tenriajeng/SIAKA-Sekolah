@@ -207,28 +207,12 @@ $(document).on('click', '#main-chat .chat-single-box .stickers .tab-content li',
         _sendMsg.html(_img);
     } else {
         _str = _sendMsg.html();
-        //_sendMsg.html(_str + ' ' + '<div class="send-sticker" style="background-image:url({0})"></div>'.format(_src));
+        _sendMsg.html(_str + ' ' + '<div class="send-sticker" style="background-image:url({0})"></div>'.format(_src));
         _sendMsg.html(_str + ' ' + _img);
     }
 });
 
-$(document).on('click', '#main-chat #paper-btn', function(e) {
 
-    var _box_message = $(this).parents('.chat-single-box').find('.messages');
-
-    var text = $($(e.currentTarget).parent().parent().parent()).find(".input-value").val();
-    _box_message.append('<div class="message out no-avatar media">' +
-        '<div class="body media-body text-right p-l-50"><div class="content msg-reply f-12 bg-primary d-inline-block">' + text + '</div><div class="seen"><i class="icon-clock f-12 m-r-5 txt-muted d-inline-block"></i><span><p class="d-inline-block">a few seconds ago </p></span><div class="clear"></div> </div></div>' +
-        ' <div class="sender media-right friend-box"><a href="javascript:void(0);" title="Me"> </a> </div>' +
-        '</div>');
-
-    hideStickerBox();
-    messageScroll();
-
-    $($(e.currentTarget).parent().parent().parent()).find(".input-value").val('');
-    return false;
-
-});
 
 $(document).on('click', function() {
 

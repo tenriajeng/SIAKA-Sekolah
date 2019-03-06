@@ -120,12 +120,12 @@
                                                 <td><?php echo $row['alamat'];?></td>
                                                 <td><?php echo $row['jns_kelamin'];?></td>
                                                 <td>
-                                                <a href="Profil_Siswa.php?id=<?php echo $row['kd_siswa'];?>">
+                                                <a href="Profil_Guru.php?id=<?php echo $row['kd_guru'];?>">
                                                     <button class="btn btn-primary btn-primary">
                                                         <i class="icofont icofont-folder-open"></i>Detail
                                                     </button>
                                                 </a>
-                                                <a href="Daftar_SiswaA.php?id=<?php echo $row['kd_siswa'];?>">
+                                                <a href="Daftar_GuruA.php?id=<?php echo $row['kd_guru'];?>">
                                                     <button class="btn btn-primary btn-danger">
                                                         <i class="icofont icofont-trash"></i>Hapus
                                                     </button>
