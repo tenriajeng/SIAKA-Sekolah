@@ -81,7 +81,51 @@
                     <div class="row">
                         <div class="chat-box">
                             <ul class="text-right boxs">
-                                
+                                <li class="chat-single-box card-shadow bg-white active" data-id="1">
+                                    <div class="had-container">
+                                        <div class="chat-header p-10 bg-gray">
+                                            <div class="user-info d-inline-block f-left">
+                                                <div class="box-live-status bg-danger  d-inline-block m-r-10"></div>
+                                                <a href="#">Josephin Doe</a>
+                                            </div>
+                                            <div class="box-tools d-inline-block">
+                                                <a href="#" class="mini">
+                                                    <i class="icofont icofont-minus f-20 m-r-10"></i>
+                                                </a>
+                                                <a class="close" href="#">
+                                                    <i class="icofont icofont-close f-20"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-body p-10">
+                                            <div class="message-scrooler">
+                                                <div class="messages">
+                                                    <div class="message out no-avatar media">
+                                                        <div class="body media-body text-right p-l-50">
+                                                            <div class="content msg-reply f-12 bg-primary d-inline-block">Good morning..</div>
+                                                            <div class="seen"><i class="icon-clock f-12 m-r-5 txt-muted d-inline-block"></i><span><p class="d-inline-block">a few seconds ago </p></span>
+                                                                <div class="clear"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sender media-right friend-box">
+                                                            <a href="javascript:void(0);" title="Me"><img src="assets/images/avatar-1.png" class="img-circle img-chat-profile" alt="Me"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chat-footer b-t-muted">
+                                            <div class="input-group write-msg">
+                                                <input type="text" class="form-control input-value" placeholder="Type a Message">
+                                                <span class="input-group-btn">
+                                                <button  id="paper-btn" class="btn btn-secondary" type="button">
+                                                    <i class="icofont icofont-paper-plane"></i>
+                                                </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                             <!-- chat side bar -->
                             <div id="sidebar" class="users p-chat-user">
@@ -160,27 +204,7 @@
     <script type="text/javascript" src="bower_components/jquery-i18next/jquery-i18next.min.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="assets/js/script.js"></script>
-    <script>
-        $(document).on('click', '#main-chat #paper-btn', function(e) {
 
-        var _box_message = $(this).parents('.chat-single-box').find('.messages');
-
-        var text = $($(e.currentTarget).parent().parent().parent()).find(".input-value").val();
-        _box_message.append('<div class="message out no-avatar media">' +
-            '<div class="body media-body text-right p-l-50"><div class="content msg-reply f-12 bg-primary d-inline-block">' + text + '</div>' +
-            '<div class="seen"><i class="icon-clock f-12 m-r-5 txt-muted d-inline-block"></i><span><p class="d-inline-block"><?=$row['timestamp']?>  </p></span>' +
-            '<div class="clear"></div> </div></div>' +
-            ' <div class="sender media-right friend-box"><a href="javascript:void(0);" title="Me"> </a> </div>' +
-            '</div>');
-
-        hideStickerBox();
-        messageScroll();
-
-        $($(e.currentTarget).parent().parent().parent()).find(".input-value").val('');
-        return false;
-
-        });
-    </script>
 </body>
 
 </html>

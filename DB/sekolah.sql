@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2019 at 08:29 PM
+-- Generation Time: Mar 07, 2019 at 03:03 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -41,6 +41,29 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`kd_admin`, `username`, `pass`, `foto_profil`) VALUES
 (1, 'admin', 'admin', 'Japan - 1941 Dec__ Luzon_ Private_ Imperial Japanese Army.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `kd_chat` int(11) NOT NULL,
+  `kd_siswa` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `to_kd_guru` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`kd_chat`, `kd_siswa`, `message`, `to_kd_guru`, `timestamp`) VALUES
+(1, 1, 'hallo', 1, '2019-03-06 03:15:34'),
+(2, 1, 'jhxzfkj \n', 1, '2019-03-06 03:15:34'),
+(3, 1, 'sfsdf \n', 1, '2019-03-06 03:15:34');
 
 -- --------------------------------------------------------
 
@@ -89,7 +112,8 @@ CREATE TABLE `guru` (
 INSERT INTO `guru` (`kd_guru`, `nip`, `nama`, `status`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
 (1, '1010', 'ito', '4', 'btp', 'soppeng', '1997-08-13', 'LAKI-LAKI', 'YDXJ0031.jpg'),
 (2, '123', 'ilham', '3', 'gowa', 'bulkum', '0000-00-00', 'LAKI-LAKI', 'sop3.jpg'),
-(3, '152482', 'ANDRIYANA', '2', 'BTP BLOK I', 'GUNUNG', '0000-00-00', 'PEREMPUAN', 'user-img.jpg');
+(3, '152482', 'ANDRIYANA', '2', 'BTP BLOK I', 'GUNUNG', '0000-00-00', 'PEREMPUAN', 'user-img.jpg'),
+(4, '32131432', 'ii', '3', 'ffhg', 'hgjhg', '0000-00-00', 'LAKI-LAKI', 'IMG_20180724_0010.jpg');
 
 -- --------------------------------------------------------
 
@@ -233,7 +257,26 @@ INSERT INTO `nilai_siswa` (`kd_nilai`, `kd_siswa`, `kd_mapel`, `nilai`, `kd_seme
 (409, 6, 15, 0, 1),
 (410, 6, 16, 0, 1),
 (411, 6, 17, 0, 1),
-(412, 6, 18, 0, 1);
+(412, 6, 18, 0, 1),
+(413, 1, 0, 0, 1),
+(414, 1, 1, 0, 1),
+(415, 1, 2, 0, 1),
+(416, 1, 3, 0, 1),
+(417, 1, 4, 0, 1),
+(418, 1, 5, 0, 1),
+(419, 1, 6, 0, 1),
+(420, 1, 7, 0, 1),
+(421, 1, 8, 0, 1),
+(422, 1, 9, 0, 1),
+(423, 1, 10, 0, 1),
+(424, 1, 11, 0, 1),
+(425, 1, 12, 0, 1),
+(426, 1, 13, 0, 1),
+(427, 1, 14, 0, 1),
+(428, 1, 15, 0, 1),
+(429, 1, 16, 0, 1),
+(430, 1, 17, 0, 1),
+(431, 1, 18, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -340,6 +383,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`kd_admin`);
 
 --
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`kd_chat`);
+
+--
 -- Indexes for table `galeri`
 --
 ALTER TABLE `galeri`
@@ -418,6 +467,12 @@ ALTER TABLE `admin`
   MODIFY `kd_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `kd_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
@@ -427,7 +482,7 @@ ALTER TABLE `galeri`
 -- AUTO_INCREMENT for table `guru`
 --
 ALTER TABLE `guru`
-  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jawaban`
@@ -457,7 +512,7 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
-  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
+  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=432;
 
 --
 -- AUTO_INCREMENT for table `semester`

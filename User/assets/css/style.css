@@ -13624,7 +13624,6 @@ table.footable-paging-center>tfoot>tr.footable-paging>td {
 }
 
 .chat-bg {
-    background-image: url("../images/chat-bg.jpg");
     background-size: cover;
     background-blend-mode: overlay;
     background-color: rgba(255, 255, 255, 0.45)
