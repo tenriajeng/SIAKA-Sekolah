@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2019 at 03:03 PM
+-- Generation Time: Mar 18, 2019 at 05:40 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -63,7 +63,21 @@ CREATE TABLE `chat` (
 INSERT INTO `chat` (`kd_chat`, `kd_siswa`, `message`, `to_kd_guru`, `timestamp`) VALUES
 (1, 1, 'hallo', 1, '2019-03-06 03:15:34'),
 (2, 1, 'jhxzfkj \n', 1, '2019-03-06 03:15:34'),
-(3, 1, 'sfsdf \n', 1, '2019-03-06 03:15:34');
+(3, 1, 'sfsdf \n', 1, '2019-03-06 03:15:34'),
+(4, 1, 'heloow admin \n', 1, '2019-03-06 03:15:34'),
+(5, 1, 'do you now meee \n', 1, '2019-03-06 03:15:34'),
+(6, 1, 'xhamster \n', 1, '2019-03-06 03:15:34'),
+(7, 1, 'asdasd \n', 1, '2019-03-06 03:15:34'),
+(8, 1, 'asdasd \n', 1, '2019-03-06 03:15:34'),
+(9, 1, 'asdasd \n', 1, '2019-03-06 03:15:34'),
+(10, 1, 'asdasd \n', 1, '2019-03-06 03:15:34'),
+(11, 1, '\n', 1, '2019-03-06 03:15:34'),
+(12, 1, '\n', 1, '2019-03-06 03:15:34'),
+(13, 1, '\n', 1, '2019-03-06 03:15:34'),
+(14, 1, '\n', 1, '2019-03-06 03:15:34'),
+(15, 1, '\n', 1, '2019-03-06 03:15:34'),
+(16, 1, '\n', 1, '2019-03-06 03:15:34'),
+(17, 1, 'laso \n', 1, '2019-03-06 03:15:34');
 
 -- --------------------------------------------------------
 
@@ -112,8 +126,7 @@ CREATE TABLE `guru` (
 INSERT INTO `guru` (`kd_guru`, `nip`, `nama`, `status`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
 (1, '1010', 'ito', '4', 'btp', 'soppeng', '1997-08-13', 'LAKI-LAKI', 'YDXJ0031.jpg'),
 (2, '123', 'ilham', '3', 'gowa', 'bulkum', '0000-00-00', 'LAKI-LAKI', 'sop3.jpg'),
-(3, '152482', 'ANDRIYANA', '2', 'BTP BLOK I', 'GUNUNG', '0000-00-00', 'PEREMPUAN', 'user-img.jpg'),
-(4, '32131432', 'ii', '3', 'ffhg', 'hgjhg', '0000-00-00', 'LAKI-LAKI', 'IMG_20180724_0010.jpg');
+(3, '152482', 'ANDRIYANA', '2', 'BTP BLOK I', 'GUNUNG', '0000-00-00', 'PEREMPUAN', 'user-img.jpg');
 
 -- --------------------------------------------------------
 
@@ -470,7 +483,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `kd_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_chat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `galeri`
