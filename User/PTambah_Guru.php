@@ -13,7 +13,7 @@
         $birthdate = explode('/',$birthdate);
         $ekstensi_diperbolehkan = array(
 		'jpg',
-		'jpeg'
+        'png'
         );
         $date = "$birthdate[2]-$birthdate[0]-$birthdate[1]";
         
@@ -40,7 +40,7 @@
 		}
 	}
 	else {
-		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT jpg ATAU jpeg');history.go(-1);</script>";
+		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT jpg,png ATAU jpeg');history.go(-1);</script>";
         }
 }
         
