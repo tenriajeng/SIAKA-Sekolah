@@ -67,7 +67,7 @@
             <div id="carousel" class="carousel slide" data-ride="carousel"> 
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block" src="images/slider.jpg" alt="First slide">
+                        <img class="d-block" src="images/beranda.jpg" alt="First slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>SMA Kristen Kondo Sapata Makassar </h1>

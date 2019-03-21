@@ -6,7 +6,11 @@ $user = $_SESSION['kd'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$ekstensi_diperbolehkan = array(
 		'docx',
-		'pdf'
+		'pdf',
+		'mp4',
+		'xlsx',
+		'rar',
+		'zip'
 	);
 	$tugas = mysqli_real_escape_string($db, $_POST['nama']);
 	$link = mysqli_real_escape_string($db, $_POST['link']);

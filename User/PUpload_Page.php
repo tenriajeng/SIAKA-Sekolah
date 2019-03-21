@@ -6,7 +6,11 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$ekstensi_diperbolehkan = array(
 		'docx',
-		'pdf'
+		'pdf',
+		'mp4',
+		'xlsx',
+		'rar',
+		'zip'
 	);
 	$materi = mysqli_real_escape_string($db, $_POST['judul']);
 	$nama = $_FILES['file']['name'];

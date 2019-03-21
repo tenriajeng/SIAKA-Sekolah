@@ -112,7 +112,7 @@
                                         <div class="col-sm-10">
                                             <select name="Kelas" class="form-control">
                                                 <option value="opt1">Pilih Kelas</option>
-                                                <option value="7">Bukan Wali Kelas</option>
+                                                
                                                 <?php
                                                 $sql = "SELECT kd_kelas,nama_kelas FROM kelas ORDER BY nama_kelas ASC";
                                                 $result = mysqli_query($db,$sql);

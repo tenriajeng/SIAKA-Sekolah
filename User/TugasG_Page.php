@@ -180,7 +180,7 @@ if (isset($_GET['id'])) {
                                             INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa 
                                             INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas 
                                             INNER JOIN kelas ON kelas.kd_kelas = jawaban.kd_kelas
-                                            WHERE jawaban.kd_kelas = $kdk";
+                                            GROUP BY jawaban.kd_jawaban ";
                                         $result=mysqli_query($db,$sql);
                                         $a=1;
                                         while ($row=mysqli_fetch_assoc($result)){
@@ -214,7 +214,7 @@ if (isset($_GET['id'])) {
                                                                 <i class="icofont icofont-download-alt"></i>Unduh
                                                             </button>
                                                         </a>
-                                                        <a href='EditM_Page.php?id=<?php echo $row[' kd_tugas '];?>'>
+                                                        <a href='EditN_Page.php?id=<?php echo $row['kd_jawaban'];?>'>
                                                             <button class="btn btn-warning btn-warning">
                                                                 <i class="icofont icofont-ui-edit"></i>Edit
                                                             </button>
