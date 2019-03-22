@@ -8,9 +8,9 @@
                         <h3>Navigation</h3>
                         <ul>
                             <li><a href="index.php">Halaman Depan</a></li>
-                            <li><a href="about.html">Tentang Kami</a></li>
-                            <li><a href="admission-form.html">Galeri </a></li>
-                            <li><a href="admission.html">Login</a></li>
+                            <li><a href="about.php">Tentang Kami</a></li>
+                            <li><a href="Gallery.php">Galeri </a></li>
+                            <li><a href="User/">Login</a></li>
                         </ul>
                     </div>
                 </div>
