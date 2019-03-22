@@ -123,7 +123,7 @@
                                         <a class="nav-link" data-toggle="tab" href="#nilai" role="tab">Nilai</a>
                                     </li>
                                     <li class="col-lg-6 nav-item">
-                                        <a class="nav-link active " data-toggle="tab" href="#personal" role="tab">Biodata</a>
+                                        <a class="nav-link" data-toggle="tab" href="#personal" role="tab">Biodata</a>
                                     </li>
                                 </ul>
                             </div>
