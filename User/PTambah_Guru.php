@@ -13,6 +13,7 @@
         $birthdate = explode('/',$birthdate);
         $ekstensi_diperbolehkan = array(
 		'jpg',
+		'jpeg',
         'png'
         );
         $date = "$birthdate[2]-$birthdate[0]-$birthdate[1]";

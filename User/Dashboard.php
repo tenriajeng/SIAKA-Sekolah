@@ -150,7 +150,7 @@ if($_SESSION['login_user']=='')
                                                 $sql = "SELECT COUNT(kd_jawaban) FROM jawaban";
                                                 $result = mysqli_query($db,$sql);
                                                 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                                echo $row['COUNT(kd_jawaban)']-4;
+                                                echo $row['COUNT(kd_jawaban)'];
                                                 ?></h5>
                                                 <span>Jawaban Tugas</span>
                                             </div>
