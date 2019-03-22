@@ -14,15 +14,15 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <!--<div class="col-md-4">
                     <div class="tweet_box">
                         <h3>Tweets</h3>
                         <div class="tweet-wrap">
                             <div class="tweet"></div>
-                            <!-- // end .tweet -->
+                             // end .tweet
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="col-md-4">
                     <div class="address">
                         <h3>Contact us</h3>
