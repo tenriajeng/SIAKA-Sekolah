@@ -6,7 +6,11 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$ekstensi_diperbolehkan = array(
 		'docx',
-		'pdf'
+		'pdf',
+		'mp4',
+		'xlsx',
+		'rar',
+		'zip'
 	);
 	$tugas = mysqli_real_escape_string($db, $_POST['judul']);
 	$nama = $_FILES['file']['name'];
@@ -30,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 	else {
-		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT PDF ATAU DOCX');history.go(-1);</script>";
+		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT PDF,DOCX,MP4,XLSX,RAR ATAU ZIP');history.go(-1);</script>";
 	}
 }
 

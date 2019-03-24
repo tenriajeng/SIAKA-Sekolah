@@ -115,10 +115,15 @@
                                                 <?php
                                                 $sql = "SELECT kd_kelas,nama_kelas FROM kelas ORDER BY nama_kelas ASC";
                                                 $result = mysqli_query($db,$sql);
-                                                while($row=mysqli_fetch_array($result)){?>
+                                                while($row=mysqli_fetch_array($result)){
+                                                    if (!($row['kd_kelas']=='7')) {
+                                                       
+                                                    
+                                                    ?>
                                                     <option value="<?php echo $row['kd_kelas'];?>"><?php echo $row['nama_kelas'];?></option>
                                                     <?php
                                                 }
+                                            }
                                                 ?>
 
                                             </select>

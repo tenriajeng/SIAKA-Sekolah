@@ -33,9 +33,9 @@
       <div class="about_bg">
          <div class="container">
             <div class="row">
-               <div class="col-md-12">
+               <!--<div class="col-md-12">
                   <a href="index.html"><img src="images/responsive-logo.png" class="responsive-logo img-fluid" alt="responsive-logo"></a>
-               </div>
+               </div>-->
             </div>
             <div class="row">
                <div class="col-md-12">

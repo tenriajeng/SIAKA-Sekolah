@@ -13,7 +13,8 @@
         $birthdate = explode('/',$birthdate);
         $ekstensi_diperbolehkan = array(
 		'jpg',
-		'jpeg'
+		'jpeg',
+        'png'
         );
         $date = "$birthdate[2]-$birthdate[0]-$birthdate[1]";
         
@@ -26,7 +27,7 @@
 		if ($ukuran < 10485760) {
 			move_uploaded_file($file_tmp, 'file/user-profile/' . $file);
 			$sql = "INSERT INTO guru(status, nip, nama, alamat, jns_kelamin, tmp_lahir,tgl_lahir,foto_profil) 
-                                VALUES ('$kdk','$nip','$nama','$alamat','$gender','$tmp',$date,'$file')";
+                                VALUES ('$kdk','$nip','$nama','$alamat','$gender','$tmp','$date','$file')";
                         $result = mysqli_query($db,$sql);
                         if($result==1){
                                 echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
@@ -40,7 +41,7 @@
 		}
 	}
 	else {
-		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT jpg ATAU jpeg');history.go(-1);</script>";
+		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT jpg,png ATAU jpeg');history.go(-1);</script>";
         }
 }
         
