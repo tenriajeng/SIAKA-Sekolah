@@ -63,7 +63,7 @@
             <!-- Page header start -->
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>Unggah Materi</h4>
+                    <h4>Unggah Tugas</h4>
                 </div>
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
@@ -98,7 +98,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Nama Tugas</label>
                                         <div class="col-sm-10">
-                                            <input type="text" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="judul" class="form-control" placeholder="Nama Materi">
+                                            <input type="text" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="judul" class="form-control" placeholder="Nama Tugas">
                                         </div>
                                     </div>
                                     <div class="form-group row">
