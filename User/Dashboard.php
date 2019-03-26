@@ -55,15 +55,15 @@ if($_SESSION['login_user']=='')
     <!-- Pre-loader end -->
     <!-- Menu header start -->
     <?php
-        include "header.php";
+    include "header.php";
     ?>
     <!-- Menu header end -->
     <!-- Menu aside start -->
     <?php
-        include "menu.php";
+    include "menu.php";
     ?>
     <!-- Menu aside end -->
-   
+
     <!-- Main-body start-->
     <div class="main-body">
         <div class="page-wrapper">
@@ -94,7 +94,7 @@ if($_SESSION['login_user']=='')
                                                     echo $row['COUNT(kd_mapel)'];
                                                     ?>
                                                 </h5>
-                                                <span>Total Mata Pelajaran</span>
+                                                <span>Total MaPel</span>
                                             </div>
                                         </div>
                                     </div>
@@ -105,11 +105,11 @@ if($_SESSION['login_user']=='')
                                             </div>
                                             <div class="col-sm-8 text-center">
                                                 <h5><?php
-                                                    $sql = "SELECT COUNT(kd_siswa) FROM siswa";
-                                                    $result = mysqli_query($db,$sql);
-                                                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                                    echo $row['COUNT(kd_siswa)'];
-                                                    ?></h5>
+                                                $sql = "SELECT COUNT(kd_siswa) FROM siswa";
+                                                $result = mysqli_query($db,$sql);
+                                                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                                echo $row['COUNT(kd_siswa)'];
+                                                ?></h5>
                                                 <span>Total Siswa</span>
                                             </div>
                                         </div>
@@ -131,11 +131,11 @@ if($_SESSION['login_user']=='')
                                             </div>
                                             <div class="col-sm-8 text-center">
                                                 <h5><?php
-                                                    $sql = "SELECT COUNT(kd_tugas) FROM tugas";
-                                                    $result = mysqli_query($db,$sql);
-                                                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                                    echo $row['COUNT(kd_tugas)'];
-                                                    ?></h5>
+                                                $sql = "SELECT COUNT(kd_tugas) FROM tugas";
+                                                $result = mysqli_query($db,$sql);
+                                                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                                echo $row['COUNT(kd_tugas)'];
+                                                ?></h5>
                                                 <span>Total Tugas</span>
                                             </div>
                                         </div>
@@ -146,8 +146,13 @@ if($_SESSION['login_user']=='')
                                                 <i class="icofont icofont-network text-primary"></i>
                                             </div>
                                             <div class="col-sm-8 text-center">
-                                                <h5>600</h5>
-                                                <span>Network</span>
+                                                <h5><?php
+                                                $sql = "SELECT COUNT(kd_jawaban) FROM jawaban";
+                                                $result = mysqli_query($db,$sql);
+                                                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                                echo $row['COUNT(kd_jawaban)'];
+                                                ?></h5>
+                                                <span>Jawaban Tugas</span>
                                             </div>
                                         </div>
                                     </div>
@@ -164,15 +169,15 @@ if($_SESSION['login_user']=='')
                                     <div class="col-sm-6 card-block-big br">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <div id="barchart" style="height:40px;width:40px;"></div>
+                                                <i class="icofont icofont-ui-music text-danger"></i>
                                             </div>
                                             <div class="col-sm-8 text-center">
                                                 <h5><?php
-                                                    $sql = "SELECT COUNT(kd_guru) FROM guru";
-                                                    $result = mysqli_query($db,$sql);
-                                                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                                    echo $row['COUNT(kd_guru)'];
-                                                    ?></h5>
+                                                $sql = "SELECT COUNT(kd_guru) FROM guru";
+                                                $result = mysqli_query($db,$sql);
+                                                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                                echo $row['COUNT(kd_guru)'];
+                                                ?></h5>
                                                 <span>Total Guru</span>
                                             </div>
                                         </div>
@@ -184,11 +189,11 @@ if($_SESSION['login_user']=='')
                                             </div>
                                             <div class="col-sm-8 text-center">
                                                 <h5><?php
-                                                    $sql = "SELECT COUNT(kd_materi) FROM materi";
-                                                    $result = mysqli_query($db,$sql);
-                                                    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                                                    echo $row['COUNT(kd_materi)'];
-                                                    ?></h5>
+                                                $sql = "SELECT COUNT(kd_materi) FROM materi";
+                                                $result = mysqli_query($db,$sql);
+                                                $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+                                                echo $row['COUNT(kd_materi)'];
+                                                ?></h5>
                                                 <span>Total Materi</span>
                                             </div>
                                         </div>
@@ -204,7 +209,7 @@ if($_SESSION['login_user']=='')
         </div>
     </div>
     <!-- Main-body end-->
-   
+
     <!-- Required Jqurey -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>

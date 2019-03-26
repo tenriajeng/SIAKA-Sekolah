@@ -46,13 +46,6 @@
         </div>
     </div>
     <!-- Pre-loader end -->
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="ball-scale">
-            <div></div>
-        </div>
-    </div>
-    <!-- Pre-loader end -->
     <!-- Menu header start -->
     <?php
     include "header.php";
@@ -65,75 +58,17 @@
     <!-- Menu aside end -->
 
     <!-- Main-body start -->
-    <div class="main-body chat-bg">
-        <div class="page-wrapper">
-            <div id="main-chat" class="container-fluid">
-                <!-- Page-header start -->
-                <div class="page-header">
-                    <div class="page-header-title">
-                        <h4>Chat </h4>
-                    </div>
-                    
-                </div>
-                <!-- Page-header end -->
-                <!-- Page-body start -->
-                <div class="page-body">
-                    <div class="row">
-                        <div class="chat-box">
-                            <ul class="text-right boxs">
-                                
-                            </ul>
-                            <!-- chat side bar -->
-                            <div id="sidebar" class="users p-chat-user">
-                                <div class="had-container">
-                                    <div class="card card_main p-fixed users-main ">
-                                        <div class="user-box">
-                                            <div class="card-block">
-                                                <div class="right-icon-control">
-                                                    <input type="text" class="form-control  search-text" placeholder="Cari">
-                                                    <div class="form-icon">
-                                                        <i class="icofont icofont-search"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-                                            $sql = "SELECT kd_guru,nama,foto_profil FROM guru ";
-                                            
-                                            $result=mysqli_query($db,$sql);
-                                            $a=1;
-                                            while ($row=mysqli_fetch_array($result)){    
-                                            ?>
-                                            <div class="media userlist-box" data-id="<?= $row['kd_guru'];?>" data-status="online" data-username="<?= $row['nama'];?>" data-toggle="tooltip" data-placement="left" title="<?= $row['nama'];?>">
-                                                <a class="media-left" href="#!">
-                                                    <img class="media-object img-circle" src="file/user-profile/<?= $row['foto_profil']; ?>" alt="Generic placeholder image">
-                                                    <div class="live-status bg-success"></div>
-                                                </a>
-                                                <div class="media-body">
-                                                    <div class="f-13 chat-header"><?= $row['nama'];?></div>
-                                                </div>
-                                            </div>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end chat side bar -->
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Page-body end -->
-            </div>
+    <div class="main-body">
+        <div class="page-wrapper" style="padding-top:5px;padding-bottom:5px;">
+            <!-- Page-body start -->
+            <!-- <div class="page-body"> -->
+                <!-- <div class="card-block"> -->
+                    <iframe class="col-sm-12 chat-bg" src="Chat_Active.php" frameborder="0"></iframe>
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- Page-body end -->
         </div>
     </div>
-    <?php
-    $sql = "SELECT timestamp FROM chat ";
-                                            
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($result);
-    ?>
     <!-- Main-body start -->
     <!-- Warning Section Starts -->
     
@@ -160,27 +95,7 @@
     <script type="text/javascript" src="bower_components/jquery-i18next/jquery-i18next.min.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="assets/js/script.js"></script>
-    <script>
-        $(document).on('click', '#main-chat #paper-btn', function(e) {
 
-        var _box_message = $(this).parents('.chat-single-box').find('.messages');
-
-        var text = $($(e.currentTarget).parent().parent().parent()).find(".input-value").val();
-        _box_message.append('<div class="message out no-avatar media">' +
-            '<div class="body media-body text-right p-l-50"><div class="content msg-reply f-12 bg-primary d-inline-block">' + text + '</div>' +
-            '<div class="seen"><i class="icon-clock f-12 m-r-5 txt-muted d-inline-block"></i><span><p class="d-inline-block"><?=$row['timestamp']?>  </p></span>' +
-            '<div class="clear"></div> </div></div>' +
-            ' <div class="sender media-right friend-box"><a href="javascript:void(0);" title="Me"> </a> </div>' +
-            '</div>');
-
-        hideStickerBox();
-        messageScroll();
-
-        $($(e.currentTarget).parent().parent().parent()).find(".input-value").val('');
-        return false;
-
-        });
-    </script>
 </body>
 
 </html>

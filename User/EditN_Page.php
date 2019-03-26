@@ -6,15 +6,14 @@
     if($_SESSION['login_user']=='')
     header("location: index.php");
     $kd = $_GET['id'];
-    $sql = "SELECT nama_tugas FROM tugas WHERE kd_tugas = $kd";
-    $s = "SELECT kd_kelas FROM siswa WHERE kd_siswa=$user";
+    $sql = "SELECT kd_jawaban, nilai_tugas FROM jawaban WHERE kd_jawaban = $kd";
+
     $result = mysqli_query($db,$sql);
-    $rr = mysqli_query($db,$s);
-    $d = mysqli_fetch_array($rr);
-    $kdk= $d['kd_kelas'];
     while($data = mysqli_fetch_array($result)){
-        $nama = $data["nama_tugas"];
+        $nama = $data["nilai_tugas"];
+        // $file = $data["kd_jawaban"];
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +66,20 @@
             <!-- Page header start -->
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>Unggah Jawaban Tugas</h4>
+                    <h4>Edit Nilai Tugas</h4>
+                </div>
+                <div class="page-header-breadcrumb">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Form Components</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Form Components</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <!-- Page header end -->
@@ -85,32 +97,18 @@
                             </div>
                             <div class="card-block">
                                
-                                <form method="POST" action="PUploadTS_Page.php" enctype="multipart/form-data">
+                                <form method="POST" action="PEditN_Page.php" enctype="multipart/form-data">
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Nama Tugas</label>
+                                        <label class="col-sm-2 col-form-label">Nilai Tugas</label>
                                         <div class="col-sm-10">
-                                            <input type="text" disable value="<?php echo $nama;?>" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="nama" class="form-control" placeholder="Nama Materi">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Link Tugas</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="link" class="form-control" placeholder="Link Tugas">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Unggah File</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" required  name="file" class="form-control">
-                                            <input type="hidden" value="<?=$kd;?>" name="kd" class="form-control">
-                                            <input type="hidden" value="<?=$kdk;?>" name="kdk" class="form-control">
-                                            <!-- <input type="file" required  name="file" class="form-control"> -->
+                                            <input type="text" value="<?php echo $nama;?>" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="nilai" class="form-control" placeholder="Nama Materi">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
-                                            <input type="submit" class="btn btn-primary" value="Unggah">
+                                            <input type="hidden" name="kd" value=<?php echo $kd;?>>
+                                            <input type="submit" class="btn btn-primary" value="Simpan">
                                         </div>
                                     </div>
                                 </form>
@@ -124,7 +122,7 @@
         </div>
     </div>
     <!-- Main-body end -->
-   
+ 
     <!-- Required Jquery -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>

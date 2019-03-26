@@ -7,7 +7,7 @@
 
     if (isset($_GET['id'])) {
         $kd = $_GET['id'];
-        $sql = "DELETE FROM guru WHERE kd_duru = $kd";
+        $sql = "DELETE FROM guru WHERE kd_guru = $kd";
         $result = mysqli_query($db, $sql);
         echo "<script>alert('Data Berhasil Dihapus');</script>";
     }
