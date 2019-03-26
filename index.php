@@ -33,9 +33,9 @@
     <header>
         <div class="container nav-menu">
             <div class="row">
-                <div class="col-md-12">
+                <!--<div class="col-md-12">
                     <a href="index.html"><img src="images/responsive-logo.png" class="responsive-logo img-fluid" alt="responsive-logo"></a>
-                </div>
+                </div>-->
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -67,7 +67,7 @@
             <div id="carousel" class="carousel slide" data-ride="carousel"> 
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block" src="images/slider.jpg" alt="First slide">
+                        <img class="d-block" src="images/Depan1.jpg" alt="First slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>SMA Kristen Kondo Sapata Makassar </h1>
