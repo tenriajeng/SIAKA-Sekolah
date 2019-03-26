@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		'mp4',
 		'xlsx',
 		'rar',
+		'pptx',
 		'zip'
 	);
 	$materi = mysqli_real_escape_string($db, $_POST['judul']);
