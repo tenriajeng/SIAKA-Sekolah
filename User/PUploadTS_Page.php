@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 	else {
-		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT PDF ATAU DOCX');history.go(-1);</script>";
+		echo "<script>alert('FILE YANG DI UPLOAD HARUS BERFOMAT PDF,DOCX,MP4,XLSX,RAR,PPTX ATAU ZIP');history.go(-1);</script>";
 	}
 }
 
