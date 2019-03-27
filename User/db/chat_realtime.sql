@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2018 at 04:21 AM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Waktu pembuatan: 27 Mar 2019 pada 10.51
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Struktur dari tabel `messages`
 --
 
-CREATE TABLE IF NOT EXISTS `messages` (
+CREATE TABLE `messages` (
   `id` int(20) NOT NULL,
   `name` text NOT NULL,
   `ke` text NOT NULL,
@@ -35,66 +37,64 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `image` varchar(500) NOT NULL,
   `tipe` varchar(200) NOT NULL,
   `date` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `name`, `ke`, `avatar`, `message`, `image`, `tipe`, `date`) VALUES
-(1, 'Akil', 'Public', 'https://avatars0.githubusercontent.com/u/17612342?s=460&v=4', 'Welcome', '', 'rooms', '2018-08-30 09:21:19');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `ke` int(20) NOT NULL,
   `name` text NOT NULL,
   `avatar` varchar(500) NOT NULL,
   `login` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`ke`, `name`, `avatar`, `login`, `status`) VALUES
-(1, 'Akil', 'https://avatars0.githubusercontent.com/u/17612342?s=460&v=4', '2018-08-30 09:21:27', 'online');
+(2, 'admin', 'file/user-profile/admin.png', '2019-03-27 10:05:16', 'offline'),
+(3, 'Dra. A. Simpuruslah', 'file/user-profile/profil.jpg', '2019-03-27 01:49:47', 'online'),
+(4, 'Alfandi', 'file/user-profile/profil.jpg', '2019-03-27 01:49:20', 'online');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `messages`
+-- Indeks untuk tabel `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ke`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `messages`
+-- AUTO_INCREMENT untuk tabel `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `ke` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ke` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
