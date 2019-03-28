@@ -77,7 +77,7 @@ $foto = $_SESSION['foto'];
                     </a>
                 </li>
                 <li class="nav-item single-item">
-                        <a href="MateriG_Page.php">
+                        <a href="MateriA_Page.php">
                             <i class="ti-book"></i>
                             <span data-i18n="nav.form-select.main">Materi </span>
                          </a>

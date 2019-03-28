@@ -100,7 +100,9 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT kd_mapel,nama_mapel FROM mapel ";
+
+                                            $sql = "SELECT mapel.kd_mapel,mapel.nama_mapel,kelas.nama_kelas FROM mapel
+                                                    INNER JOIN kelas ON kelas.kd_kelas = mapel.kd_kelas ";
                                             
                                             $result=mysqli_query($db,$sql);
                                             $a=1;
@@ -108,7 +110,12 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $a++;?></td>
-                                                <td><?php echo $row['nama_mapel'];?></td>
+                                                <td>
+                                                <?php 
+                                                    echo $row['nama_mapel']." ";
+                                                    echo $row['nama_kelas'];
+                                                ?>
+                                                </td>
                                                 <td>
                                                 <a href="Edit_Mapel.php?id=<?php echo $row['kd_mapel'];?>">
                                                     <button class="btn btn-warning btn-warning">

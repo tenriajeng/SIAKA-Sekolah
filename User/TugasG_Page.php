@@ -120,7 +120,7 @@ if (isset($_GET['id'])) {
                                                                 <i class="icofont icofont-download-alt"></i>Unduh
                                                             </button>
                                                         </a>
-                                                        <a href='EditM_Page.php?id=<?php echo $row[' kd_tugas '];?>'>
+                                                        <a href='EditT_Page.php?id=<?php echo $row['kd_tugas'];?>'>
                                                             <button class="btn btn-warning btn-warning">
                                                                 <i class="icofont icofont-ui-edit"></i>Edit
                                                             </button>
@@ -161,26 +161,20 @@ if (isset($_GET['id'])) {
                                                 <th>Link</th>
                                                 <th>Nilai</th>
                                                 <th>Kelas</th>
+                                                <th>Mata Pelajaran</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT jawaban.kd_jawaban,
-                                            kelas.nama_kelas,
-                                            siswa.nama,
-                                            siswa.nis,
-                                            jawaban.kd_tugas,
-                                            tugas.nama_tugas,
-                                            jawaban.kd_kelas,
-                                            jawaban.link,
-                                            jawaban.nilai_tugas,
-                                            jawaban.nama_file
+                                            $sql = "SELECT jawaban.kd_jawaban,mapel.nama_mapel,kelas.nama_kelas,siswa.nama,siswa.nis,jawaban.kd_tugas,
+                                            tugas.nama_tugas,jawaban.kd_kelas,jawaban.link,jawaban.nilai_tugas,jawaban.nama_file
                                             FROM jawaban 
                                             INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa 
                                             INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas 
                                             INNER JOIN kelas ON kelas.kd_kelas = jawaban.kd_kelas
-                                            GROUP BY jawaban.kd_jawaban ";
+                                            INNER JOIN mapel ON mapel.kd_mapel = jawaban.kd_mapel
+                                            GROUP BY jawaban.kd_jawaban";
                                         $result=mysqli_query($db,$sql);
                                         $a=1;
                                         while ($row=mysqli_fetch_assoc($result)){
@@ -206,6 +200,10 @@ if (isset($_GET['id'])) {
                                                     </td>
                                                     <td>
                                                         <?php echo $row['nama_kelas'];?>
+
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['nama_mapel'];?>
 
                                                     </td>
                                                     <td>

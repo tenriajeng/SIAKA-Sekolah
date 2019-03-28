@@ -101,10 +101,7 @@ if (isset($_GET['id'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT materi.kd_materi,materi.nama_materi,materi.nama_file,guru_mapel.kd_guru FROM guru_mapel 
-                                    INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel 
-                                    INNER JOIN materi ON materi.kd_mapel = guru_mapel.kd_mapel 
-                                    WHERE guru_mapel.kd_guru = $user";
+                                    $sql = "SELECT * FROM materi";
                                     $result=mysqli_query($db,$sql);
                                     $a=1;
                                     while ($row=mysqli_fetch_array($result)){

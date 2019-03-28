@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		'zip'
 	);
 	$tugas = mysqli_real_escape_string($db, $_POST['judul']);
+	$kelas = mysqli_real_escape_string($db, $_POST['Kelas']);
+	$mapel = mysqli_real_escape_string($db, $_POST['mapel']);
 	$nama = $_FILES['file']['name'];
 	$x = explode('.', $nama);
 	$ekstensi = strtolower(end($x));
@@ -21,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 10485760) {
 			move_uploaded_file($file_tmp, 'file/' . $nama);
-			$sql = "INSERT INTO tugas (nama_tugas, nama_file) VALUES('$tugas', '$nama')";
+			$sql = "INSERT INTO tugas (nama_tugas, nama_file, kd_kelas, kd_mapel) VALUES('$tugas', '$nama', '$kelas', '$mapel')";
 			if ($db->query($sql) === TRUE) {
-				header("location: TugasG_Page.php");
+				echo "<script>alert('Berhasil Di Upload');history.go(-2);</script>";
 			}
 			else {
 				echo "Error: " . $sql . "<br />" . $conn->error;

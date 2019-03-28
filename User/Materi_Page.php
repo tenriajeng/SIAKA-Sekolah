@@ -1,6 +1,7 @@
 <?php
     session_start();
     $user = $_SESSION['kd'];
+    $kdk = $_SESSION['kdk'];
     include "Config/Connection.php";
     if($_SESSION['login_user']=='')
     header("location: index.php");
@@ -87,7 +88,10 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT nama_materi,nama_file FROM materi ORDER BY nama_materi ASC";
+                                    $sql = "SELECT materi.nama_materi,materi.nama_file,materi.kd_kelas,mapel.nama_mapel
+                                    FROM materi
+                                    INNER JOIN mapel ON mapel.kd_mapel = materi.kd_mapel
+                                    WHERE materi.kd_kelas = $kdk";
                                     $result=mysqli_query($db,$sql);
                                     $a=1;
                                     while ($row=mysqli_fetch_array($result)){

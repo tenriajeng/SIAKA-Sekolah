@@ -5,6 +5,15 @@
     
     if($_SESSION['login_user']=='')
     header("location: index.php");
+    $kd = $_GET['id'];
+    $sql = "SELECT kd_tugas, nama_tugas, nama_file FROM tugas WHERE kd_tugas = $kd";
+
+    $result = mysqli_query($db,$sql);
+    while($data = mysqli_fetch_array($result)){
+        $nama = $data["nama_tugas"];
+        $file = $data["nama_file"];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +21,6 @@
 
 <head>
     <title>SMA Kristen Kondo Sapata Makassar</title>
-    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -63,8 +66,9 @@
             <!-- Page header start -->
             <div class="page-header">
                 <div class="page-header-title">
-                    <h4>Unggah Tugas</h4>
+                    <h4>Unggah Materi</h4>
                 </div>
+               
             </div>
             <!-- Page header end -->
             <!-- Page body start -->
@@ -74,18 +78,18 @@
                         <!-- Basic Form Inputs card start -->
                         <div class="card">
                             <div class="card-header">
-                                <h5></h5>
+                                <h5>Basic Form Inputs</h5>
                                 <div class="card-header-right">
                                     <i class="icofont icofont-rounded-down"></i>
                                 </div>
                             </div>
                             <div class="card-block">
                                
-                                <form method="POST" action="PUploadT_Page.php" enctype="multipart/form-data">
+                                <form method="POST" action="PEditT_Page.php" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Nama Tugas</label>
                                         <div class="col-sm-10">
-                                            <input type="text" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="judul" class="form-control" placeholder="Nama Tugas">
+                                            <input type="text" value="<?php echo $nama;?>" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="judul" class="form-control" placeholder="Nama Materi">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -131,13 +135,14 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Unggah File</label>
                                         <div class="col-sm-10">
-                                            <input type="file" required  name="file" class="form-control">
+                                            <input type="file"  name="file" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
-                                            <input type="submit" class="btn btn-primary" value="Unggah">
+                                            <input type="hidden" name="kd" value=<?php echo $kd;?>>
+                                            <input type="submit" class="btn btn-primary" value="Simpan">
                                         </div>
                                     </div>
                                 </form>
@@ -151,8 +156,7 @@
         </div>
     </div>
     <!-- Main-body end -->
-   
-    <!-- Warning Section Ends -->
+ 
     <!-- Required Jquery -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>

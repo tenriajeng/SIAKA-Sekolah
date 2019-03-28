@@ -1,6 +1,7 @@
 <?php
 session_start();
 $user = $_SESSION['kd'];
+$kdk = $_SESSION['kdk'];
 include "Config/Connection.php";
 
 if($_SESSION['login_user']=='')
@@ -91,13 +92,17 @@ if (isset($_GET['id'])) {
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tugas</th>
+                                                <th>Mata Pelajaran</th>
                                                 <th>Unduh Soal</th>
                                                 <th>Upload Tugas</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $sql = "SELECT kd_tugas,nama_tugas,nama_file FROM tugas";
+
+                                        $sql = "SELECT tugas.kd_tugas,tugas.nama_tugas,tugas.nama_file,mapel.nama_mapel FROM tugas 
+                                                INNER JOIN mapel ON mapel.kd_mapel = tugas.kd_mapel
+                                                WHERE tugas.kd_kelas = $kdk";
                                         $result=mysqli_query($db,$sql);
                                         $a=1;
                                         while ($row=mysqli_fetch_assoc($result)){
@@ -108,6 +113,9 @@ if (isset($_GET['id'])) {
                                                     </th>
                                                     <td>
                                                         <?php echo $row['nama_tugas'];?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $row['nama_mapel'];?>
                                                     </td>
                                                     
                                                     <td>

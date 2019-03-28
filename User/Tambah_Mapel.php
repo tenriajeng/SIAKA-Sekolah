@@ -88,6 +88,28 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Kelas</label>
+                                        <div class="col-sm-10">
+                                        <select name="Kelas" class="form-control">
+                                                <option value="opt1">Pilih Kelas</option>
+                                                <?php
+                                                $sql = "SELECT kd_kelas,nama_kelas FROM kelas ORDER BY nama_kelas ASC";
+                                                $result = mysqli_query($db,$sql);
+                                                while($row=mysqli_fetch_array($result)){
+                                                    if (!($row['kd_kelas']=='7')) {
+                                                       
+                                                    
+                                                    ?>
+                                                    <option value="<?php echo $row['kd_kelas'];?>"><?php echo $row['nama_kelas'];?></option>
+                                                    <?php
+                                                }
+                                            }
+                                                ?>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
                                             <input type="submit" class="btn btn-primary" value="Simpan">

@@ -59,14 +59,14 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 				}
 			}
 		}
-		else if($_POST['data'] == 'logout'){
-			$data = $chat->user_logout($_SESSION['user']);
-			if($data['status'] == 'success'){
-				unset($_SESSION['user']);
-				// session_destroy();
-			}
-			header("location: ../Chat_Active.php");
-		}
+		// else if($_POST['data'] == 'logout'){
+		// 	$data = $chat->user_logout($_SESSION['user']);
+		// 	if($data['status'] == 'success'){
+		// 		unset($_SESSION['user']);
+		// 		session_destroy();
+		// 	}
+		// 	header("location: ../Chat_Active.php");
+		// }
 	}
 }else{
 	$data["API"] = "Chating";
