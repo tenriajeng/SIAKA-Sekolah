@@ -61,7 +61,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h1>Tetang Kami</h1>
+					<h1>Tentang Kami</h1>
 				</div>
 			</div>
 		</div>
