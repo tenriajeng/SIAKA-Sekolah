@@ -114,6 +114,7 @@
                                             $a=1;
                                             while ($row=mysqli_fetch_array($result)){    
                                             ?>
+
                                             <tr>
                                                 <td><?php echo $a++;?></td>
                                                 <td><?php echo $row['nis'];?></td>
@@ -125,6 +126,12 @@
                                                 <a href="Profil_Siswa.php?id=<?php echo $row['kd_siswa'];?>">
                                                     <button class="btn btn-primary btn-primary">
                                                         <i class="icofont icofont-folder-open"></i>Detail
+                                                    </button>
+                                                </a>
+
+                                                <a href="Edit_Siswa.php?id=<?php echo $row['kd_siswa'];?>">
+                                                    <button class="btn btn-warning btn-warning">
+                                                        <i class="icofont icofont-edit"></i>Edit
                                                     </button>
                                                 </a>
                                                 <a href="Daftar_SiswaA.php?id=<?php echo $row['kd_siswa'];?>">

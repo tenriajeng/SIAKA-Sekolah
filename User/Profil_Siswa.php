@@ -199,6 +199,13 @@
                                                                             INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
                                                                             INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
                                                                             WHERE siswa.kd_siswa = $kd AND semester.nm_semester = $jml ORDER BY mapel.nama_mapel ASC";
+
+                                                                            // $sql= "SELECT nilai_siswa.kd_nilai,siswa.kd_siswa,mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester,guru_mapel.kd_guru
+                                                                            // FROM siswa  INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa =siswa.kd_siswa 
+                                                                            // INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
+                                                                            // INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
+                                                                            // INNER JOIN guru_mapel ON guru_mapel.kd_mapel = nilai_siswa.kd_mapel
+                                                                            // WHERE siswa.kd_siswa = $kd AND semester.nm_semester = $jml AND guru_mapel.kd_mapel = $user ORDER BY mapel.nama_mapel ASC ";
                                                                             $result=mysqli_query($db,$sql);
                                                                             $a=1;
                                                                             while($row=mysqli_fetch_array($result)){

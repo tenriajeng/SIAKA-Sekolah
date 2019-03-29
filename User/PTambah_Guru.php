@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($ukuran < 10485760) {
             move_uploaded_file($file_tmp, 'file/user-profile/' . $file);
             $sql    = "INSERT INTO guru(status, nip, nama, pass, alamat, jns_kelamin, tmp_lahir,tgl_lahir,foto_profil) 
-                                VALUES ('$kdk','$nip','$pass','$nama','$alamat','$gender','$tmp','$date','$file')";
+                                VALUES ('$kdk','$nip','$nama','$pass','$alamat','$gender','$tmp','$date','$file')";
             $result = mysqli_query($db, $sql);
             if ($result == 1) {
                 echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
