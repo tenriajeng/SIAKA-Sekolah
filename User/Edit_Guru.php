@@ -5,6 +5,17 @@ include "Config/Connection.php";
 
 if ($_SESSION['login_user'] == '')
     header("location: index.php");
+    $kd = $_GET['id'];
+    $sql = "SELECT nip, nama, pass, alamat, tmp_lahir FROM guru WHERE kd_guru = $kd";
+
+    $result = mysqli_query($db,$sql);
+    while($data = mysqli_fetch_array($result)){
+        $nip = $data["nip"];
+        $pass = $data["pass"];
+        $nama = $data["nama"];
+        $alamat = $data["alamat"];
+        $tmp_lhr = $data["tmp_lahir"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -87,23 +98,23 @@ include "menu.php";
                             </div>
                             <div class="card-block">
                                
-                                <form method="POST" action="PTambah_Guru.php" enctype="multipart/form-data">
+                                <form method="POST" action="PEdit_Guru.php" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">NIP </label>
                                         <div class="col-sm-10">
-                                            <input type="text" required  name="NIP" class="form-control" placeholder="NIP">
+                                            <input type="text" required value="<?=$nip?>" name="NIP" class="form-control" placeholder="NIP">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Nama </label>
                                         <div class="col-sm-10">
-                                            <input type="text" required name="Nama" class="form-control" placeholder="Nama ">
+                                            <input type="text" required value="<?=$nama?>" name="Nama" class="form-control" placeholder="Nama ">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Kata Sandi </label>
                                         <div class="col-sm-10">
-                                            <input type="text" required name="pass" class="form-control" placeholder="Kata Sandi ">
+                                            <input type="text" required value="<?=$pass?>" name="pass" class="form-control" placeholder="Kata Sandi">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -145,17 +156,34 @@ while ($row = mysqli_fetch_array($result)) {
                                             <span class="messages"></span>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label"> Mata Pelajaran </label>
+                                        <div class="col-sm-10">
+                                            <?php
+                                            $sql = "SELECT kd_mapel,nama_mapel FROM mapel";
+                                            $result = mysqli_query($db, $sql);
+                                            while ($row = mysqli_fetch_array($result)) {?>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" name="mapel[]" value="<?=$row['kd_mapel']?>"> <?=$row['nama_mapel']?>
+                                                </label>
+                                            </div>
+                                            <?php
+                                            }
+                                            ?>
+                                            <span class="messages"></span>
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Alamat </label>
                                         <div class="col-sm-10">
-                                            <input type="text" required name="alamat" class="form-control" placeholder="Alamat">
+                                            <input type="text" required name="alamat" value="<?=$alamat?>" class="form-control" placeholder="Alamat">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Tempat Lahir </label>
                                         <div class="col-sm-10">
-                                            <input type="text" required name="tmp" class="form-control" placeholder="Tempat Lahir">
+                                            <input type="text" required name="tmp" value="<?=$tmp_lhr?>" class="form-control" placeholder="Tempat Lahir">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -163,6 +191,7 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="col-sm-10">
                                         
                                             <input type="text" name="birthdate" class="form-control" value="10/24/2000">
+                                            <input type="hidden" name="kd" class="form-control" value="<?=$kd?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">

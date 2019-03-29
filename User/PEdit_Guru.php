@@ -3,6 +3,7 @@ include("Config/Connection.php");
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $kd                     = mysqli_real_escape_string($db, $_POST['kd']);
     $nip                    = mysqli_real_escape_string($db, $_POST['NIP']);
     $nama                   = mysqli_real_escape_string($db, $_POST['Nama']);
     $pass                   = mysqli_real_escape_string($db, $_POST['pass']);
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'jpeg',
         'png'
     );
-    $date                   = "$birthdate[2]-$birthdate[0]-$birthdate[1]";
+    $date     = "$birthdate[2]-$birthdate[0]-$birthdate[1]";
     
     $file     = $_FILES['file']['name'];
     $x        = explode('.', $file);
@@ -27,11 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
         if ($ukuran < 10485760) {
             move_uploaded_file($file_tmp, 'file/user-profile/' . $file);
-            $sql    = "INSERT INTO guru(status, nip, nama, pass, alamat, jns_kelamin, tmp_lahir,tgl_lahir,foto_profil) 
-                                VALUES ('$kdk','$nip','$pass','$nama','$alamat','$gender','$tmp','$date','$file')";
+            $sql    = "UPDATE guru SET nip='$nip',pass='$pass',nama='$nama',status='$kdk',alamat='$alamat',tmp_lahir='$tmp',tgl_lahir='$date',jns_kelamin='$gender',foto_profil='$file' WHERE kd_guru= $kd";
+            $jumlah = count($_POST['mapel']); //menghitung jumlah value yang di centang
+            for($i=0; $i<$jumlah; $i++){
+                    $mapel = $_POST['mapel'][$i]."-";
+                    $sqlgm  = "INSERT INTO guru_mapel(kd_guru, kd_mapel) VALUES ('$kd','$mapel')";
+                    // echo $sqlgm;
+                    mysqli_query($db, $sqlgm);
+            }
+            
+
             $result = mysqli_query($db, $sql);
             if ($result == 1) {
-                echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
+                // echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
             } else {
                 echo $sql;
             }

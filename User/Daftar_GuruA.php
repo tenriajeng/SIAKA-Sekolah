@@ -124,6 +124,10 @@
                                                     <button class="btn btn-primary btn-primary">
                                                         <i class="icofont icofont-folder-open"></i>Detail
                                                     </button>
+                                                </a><a href="Edit_Guru.php?id=<?php echo $row['kd_guru'];?>">
+                                                    <button class="btn btn-warning btn-warning">
+                                                        <i class="icofont icofont-edit"></i>Edit
+                                                    </button>
                                                 </a>
                                                 <a href="Daftar_GuruA.php?id=<?php echo $row['kd_guru'];?>">
                                                     <button class="btn btn-primary btn-danger">

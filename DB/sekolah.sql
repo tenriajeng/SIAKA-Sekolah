@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Mar 2019 pada 10.50
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.11
+-- Generation Time: Mar 29, 2019 at 03:58 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`kd_admin`, `username`, `pass`, `foto_profil`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `admin` (`kd_admin`, `username`, `pass`, `foto_profil`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `chat`
+-- Table structure for table `chat`
 --
 
 CREATE TABLE `chat` (
@@ -59,7 +59,7 @@ CREATE TABLE `chat` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galeri`
+-- Table structure for table `galeri`
 --
 
 CREATE TABLE `galeri` (
@@ -68,7 +68,7 @@ CREATE TABLE `galeri` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `galeri`
+-- Dumping data for table `galeri`
 --
 
 INSERT INTO `galeri` (`kd_foto`, `nama_foto`) VALUES
@@ -83,12 +83,13 @@ INSERT INTO `galeri` (`kd_foto`, `nama_foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `guru`
+-- Table structure for table `guru`
 --
 
 CREATE TABLE `guru` (
   `kd_guru` int(11) NOT NULL,
   `nip` varchar(30) NOT NULL,
+  `pass` varchar(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL,
   `alamat` text NOT NULL,
@@ -99,17 +100,43 @@ CREATE TABLE `guru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `guru`
+-- Dumping data for table `guru`
 --
 
-INSERT INTO `guru` (`kd_guru`, `nip`, `nama`, `status`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
-(9, '01', 'Dra. A. Simpuruslah', '4', 'jl.sungai saddang', 'takkalalla', '1959-12-12', 'PEREMPUAN', 'profil.jpg'),
-(10, '02', 'Rahmat', '7', 'jl.Ablam', 'makassar', '2000-10-06', 'LAKI-LAKI', 'profil.jpg');
+INSERT INTO `guru` (`kd_guru`, `nip`, `pass`, `nama`, `status`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
+(9, '01', '01', 'Dra. A. Simpuruslah', '3', 'jl.sungai saddang', 'takkalalla', '2000-10-24', 'LAKI-LAKI', 'IMG-20190316-WA0004.jpg'),
+(10, '02', '002', 'Rahmat', '2', 'jl.Ablam', 'makassar', '2000-10-24', 'LAKI-LAKI', 'Deadpool-Logo-Wallpaper-On-Wallpaper-Hd-4.jpg'),
+(11, '1290390', 'iuyri', 'iowu', '1', 'qwe', 'sf', '2000-10-24', 'LAKI-LAKI', 'IMG_6169  paskecil.jpg'),
+(12, '1290390', 'asihdjasdh', 'adas', '1', 'asdasd', 'sf', '2000-10-24', 'LAKI-LAKI', 'IMG_6169  paskecil.jpg'),
+(13, '1290390', 'tenriajeng', 'ilham', '1', 'qwe', 'sf', '2000-10-24', 'LAKI-LAKI', 'dual-monitor-wallpaper-gaming-pc-master-race.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jawaban`
+-- Table structure for table `guru_mapel`
+--
+
+CREATE TABLE `guru_mapel` (
+  `kd_gm` int(11) NOT NULL,
+  `kd_guru` int(11) NOT NULL,
+  `kd_mapel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `guru_mapel`
+--
+
+INSERT INTO `guru_mapel` (`kd_gm`, `kd_guru`, `kd_mapel`) VALUES
+(1, 9, 1),
+(2, 9, 3),
+(4, 13, 1),
+(5, 13, 3),
+(6, 9, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jawaban`
 --
 
 CREATE TABLE `jawaban` (
@@ -117,15 +144,23 @@ CREATE TABLE `jawaban` (
   `kd_siswa` int(11) NOT NULL,
   `kd_tugas` int(11) NOT NULL,
   `kd_kelas` int(11) NOT NULL,
+  `kd_mapel` int(11) NOT NULL,
   `link` text NOT NULL,
   `nilai_tugas` double NOT NULL DEFAULT '0',
   `nama_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jawaban`
+--
+
+INSERT INTO `jawaban` (`kd_jawaban`, `kd_siswa`, `kd_tugas`, `kd_kelas`, `kd_mapel`, `link`, `nilai_tugas`, `nama_file`) VALUES
+(1, 21, 6, 1, 1, '', 90, 'printkartupeserta.pdf');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -134,7 +169,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`kd_kelas`, `nama_kelas`) VALUES
@@ -149,61 +184,48 @@ INSERT INTO `kelas` (`kd_kelas`, `nama_kelas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mapel`
+-- Table structure for table `mapel`
 --
 
 CREATE TABLE `mapel` (
   `kd_mapel` int(11) NOT NULL,
+  `kd_kelas` int(11) NOT NULL,
   `nama_mapel` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mapel`
+-- Dumping data for table `mapel`
 --
 
-INSERT INTO `mapel` (`kd_mapel`, `nama_mapel`) VALUES
-(2, 'Agama'),
-(13, 'Bahasa Indonesia'),
-(21, 'Bahasa Inggris I'),
-(3, 'BHS.INGGRIS'),
-(4, 'Biologi'),
-(11, 'Ekonomi'),
-(14, 'Fisika'),
-(12, 'Geografi'),
-(15, 'Kimia'),
-(18, 'KIRT'),
-(8, 'Matematika'),
-(19, 'Mulok'),
-(1, 'Penjas'),
-(10, 'PKN'),
-(5, 'Prakarya'),
-(17, 'Seni Budaya'),
-(6, 'Sosiologi'),
-(16, 'TIK');
+INSERT INTO `mapel` (`kd_mapel`, `kd_kelas`, `nama_mapel`) VALUES
+(1, 3, 'IPA'),
+(3, 5, 'IPS');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
   `kd_materi` int(11) NOT NULL,
+  `kd_kelas` int(11) NOT NULL,
+  `kd_mapel` int(11) NOT NULL,
   `nama_materi` text NOT NULL,
   `nama_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
-INSERT INTO `materi` (`kd_materi`, `nama_materi`, `nama_file`) VALUES
-(2, 'Materi 1', 'Bahan ajar biologi XI.A.docx');
+INSERT INTO `materi` (`kd_materi`, `kd_kelas`, `kd_mapel`, `nama_materi`, `nama_file`) VALUES
+(1, 1, 1, 'one piece', 'IMG_20190316_112317-dikonversi.pdf');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai_siswa`
+-- Table structure for table `nilai_siswa`
 --
 
 CREATE TABLE `nilai_siswa` (
@@ -215,110 +237,73 @@ CREATE TABLE `nilai_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nilai_siswa`
+-- Dumping data for table `nilai_siswa`
 --
 
 INSERT INTO `nilai_siswa` (`kd_nilai`, `kd_siswa`, `kd_mapel`, `nilai`, `kd_semester`) VALUES
-(394, 6, 0, 0, 1),
-(395, 6, 1, 0, 1),
-(396, 6, 2, 0, 1),
-(397, 6, 3, 0, 1),
-(398, 6, 4, 0, 1),
-(399, 6, 5, 0, 1),
-(400, 6, 6, 0, 1),
-(401, 6, 7, 0, 1),
-(402, 6, 8, 0, 1),
-(403, 6, 9, 0, 1),
-(404, 6, 10, 0, 1),
-(405, 6, 11, 0, 1),
-(406, 6, 12, 0, 1),
-(407, 6, 13, 0, 1),
-(408, 6, 14, 0, 1),
-(409, 6, 15, 0, 1),
-(410, 6, 16, 0, 1),
-(411, 6, 17, 0, 1),
-(412, 6, 18, 0, 1),
-(413, 1, 0, 0, 1),
-(414, 1, 1, 0, 1),
-(415, 1, 2, 0, 1),
-(416, 1, 3, 0, 1),
-(417, 1, 4, 0, 1),
-(418, 1, 5, 0, 1),
-(419, 1, 6, 0, 1),
-(420, 1, 7, 0, 1),
-(421, 1, 8, 0, 1),
-(422, 1, 9, 0, 1),
-(423, 1, 10, 0, 1),
-(424, 1, 11, 0, 1),
-(425, 1, 12, 0, 1),
-(426, 1, 13, 0, 1),
-(427, 1, 14, 0, 1),
-(428, 1, 15, 0, 1),
-(429, 1, 16, 0, 1),
-(430, 1, 17, 0, 1),
-(431, 1, 18, 0, 1),
-(432, 14, 0, 0, 1),
-(433, 14, 1, 0, 1),
-(434, 14, 2, 0, 1),
-(435, 14, 3, 0, 1),
-(436, 14, 4, 0, 1),
-(437, 14, 5, 0, 1),
-(438, 14, 6, 0, 1),
-(439, 14, 7, 0, 1),
-(440, 14, 8, 0, 1),
-(441, 14, 9, 0, 1),
-(442, 14, 10, 0, 1),
-(443, 14, 11, 0, 1),
-(444, 14, 12, 0, 1),
-(445, 14, 13, 0, 1),
-(446, 14, 14, 0, 1),
-(447, 14, 15, 0, 1),
-(448, 14, 16, 0, 1),
-(449, 14, 17, 0, 1),
-(450, 14, 18, 0, 1),
-(451, 14, 0, 0, 2),
-(452, 14, 1, 0, 2),
-(453, 14, 2, 0, 2),
-(454, 14, 3, 0, 2),
-(455, 14, 4, 0, 2),
-(456, 14, 5, 0, 2),
-(457, 14, 6, 0, 2),
-(458, 14, 7, 0, 2),
-(459, 14, 8, 0, 2),
-(460, 14, 9, 0, 2),
-(461, 14, 10, 0, 2),
-(462, 14, 11, 0, 2),
-(463, 14, 12, 0, 2),
-(464, 14, 13, 0, 2),
-(465, 14, 14, 0, 2),
-(466, 14, 15, 0, 2),
-(467, 14, 16, 0, 2),
-(468, 14, 17, 0, 2),
-(469, 14, 18, 0, 2),
-(470, 21, 0, 0, 1),
-(471, 21, 1, 0, 1),
-(472, 21, 2, 0, 1),
-(473, 21, 3, 0, 1),
-(474, 21, 4, 0, 1),
-(475, 21, 5, 0, 1),
-(476, 21, 6, 0, 1),
-(477, 21, 7, 0, 1),
-(478, 21, 8, 0, 1),
-(479, 21, 9, 0, 1),
-(480, 21, 10, 0, 1),
-(481, 21, 11, 0, 1),
-(482, 21, 12, 0, 1),
-(483, 21, 13, 0, 1),
-(484, 21, 14, 0, 1),
-(485, 21, 15, 0, 1),
-(486, 21, 16, 0, 1),
-(487, 21, 17, 0, 1),
-(488, 21, 18, 0, 1);
+(1, 1, 1, 1, 2),
+(2, 21, 0, 0, 1),
+(3, 21, 1, 0, 1),
+(4, 21, 2, 0, 1),
+(5, 21, 3, 0, 1),
+(6, 21, 4, 0, 1),
+(7, 21, 5, 0, 1),
+(8, 21, 6, 0, 1),
+(9, 21, 7, 0, 1),
+(10, 21, 8, 0, 1),
+(11, 21, 9, 0, 1),
+(12, 21, 10, 0, 1),
+(13, 21, 11, 0, 1),
+(14, 21, 12, 0, 1),
+(15, 21, 13, 0, 1),
+(16, 21, 14, 0, 1),
+(17, 21, 15, 0, 1),
+(18, 21, 16, 0, 1),
+(19, 21, 17, 0, 1),
+(20, 21, 18, 0, 1),
+(21, 21, 0, 0, 2),
+(22, 21, 1, 0, 2),
+(23, 21, 2, 0, 2),
+(24, 21, 3, 0, 2),
+(25, 21, 4, 0, 2),
+(26, 21, 5, 0, 2),
+(27, 21, 6, 0, 2),
+(28, 21, 7, 0, 2),
+(29, 21, 8, 0, 2),
+(30, 21, 9, 0, 2),
+(31, 21, 10, 0, 2),
+(32, 21, 11, 0, 2),
+(33, 21, 12, 0, 2),
+(34, 21, 13, 0, 2),
+(35, 21, 14, 0, 2),
+(36, 21, 15, 0, 2),
+(37, 21, 16, 0, 2),
+(38, 21, 17, 0, 2),
+(39, 21, 18, 0, 2),
+(40, 22, 0, 0, 1),
+(41, 22, 1, 0, 1),
+(42, 22, 2, 0, 1),
+(43, 22, 3, 0, 1),
+(44, 22, 4, 0, 1),
+(45, 22, 5, 0, 1),
+(46, 22, 6, 0, 1),
+(47, 22, 7, 0, 1),
+(48, 22, 8, 0, 1),
+(49, 22, 9, 0, 1),
+(50, 22, 10, 0, 1),
+(51, 22, 11, 0, 1),
+(52, 22, 12, 0, 1),
+(53, 22, 13, 0, 1),
+(54, 22, 14, 0, 1),
+(55, 22, 15, 0, 1),
+(56, 22, 16, 0, 1),
+(57, 22, 17, 0, 1),
+(58, 22, 18, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `semester`
+-- Table structure for table `semester`
 --
 
 CREATE TABLE `semester` (
@@ -327,7 +312,7 @@ CREATE TABLE `semester` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `semester`
+-- Dumping data for table `semester`
 --
 
 INSERT INTO `semester` (`kd_semester`, `nm_semester`) VALUES
@@ -341,7 +326,7 @@ INSERT INTO `semester` (`kd_semester`, `nm_semester`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Table structure for table `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -357,35 +342,39 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `siswa`
+-- Dumping data for table `siswa`
 --
 
 INSERT INTO `siswa` (`kd_siswa`, `kd_kelas`, `nis`, `nama`, `alamat`, `tmp_lahir`, `tgl_lahir`, `jns_kelamin`, `foto_profil`) VALUES
-(21, 4, '210101', 'Alfandi', 'jl.veteran selatan', 'makassar', '2003-01-09', 'LAKI-LAKI', 'profil.jpg');
+(21, 1, '210101', 'Alfandi', 'jl.veteran selatan', 'makassar', '2003-01-09', 'LAKI-LAKI', 'profil.jpg'),
+(22, 5, '152246', 'ilham', 'jl. perintis kemerdekaan no.4', 'soppeng', '2000-10-24', 'LAKI-LAKI', '0yknWeg.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas`
+-- Table structure for table `tugas`
 --
 
 CREATE TABLE `tugas` (
   `kd_tugas` int(11) NOT NULL,
+  `kd_mapel` int(11) NOT NULL,
+  `kd_kelas` int(11) NOT NULL,
   `nama_tugas` text NOT NULL,
   `nama_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tugas`
+-- Dumping data for table `tugas`
 --
 
-INSERT INTO `tugas` (`kd_tugas`, `nama_tugas`, `nama_file`) VALUES
-(5, 'tugas 1', 'Tugas 1 biologi.docx');
+INSERT INTO `tugas` (`kd_tugas`, `kd_mapel`, `kd_kelas`, `nama_tugas`, `nama_file`) VALUES
+(6, 1, 5, 'tugas besar 2', 'JURNAL PISING.docx'),
+(7, 3, 4, 'tugas besar', 'JURNAL MARDIANA.docx');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `wali_kelas`
+-- Table structure for table `wali_kelas`
 --
 
 CREATE TABLE `wali_kelas` (
@@ -395,7 +384,7 @@ CREATE TABLE `wali_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `wali_kelas`
+-- Dumping data for table `wali_kelas`
 --
 
 INSERT INTO `wali_kelas` (`kd_wali`, `kd_guru`, `kd_kelas`) VALUES
@@ -406,163 +395,175 @@ INSERT INTO `wali_kelas` (`kd_wali`, `kd_guru`, `kd_kelas`) VALUES
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`kd_admin`);
 
 --
--- Indeks untuk tabel `chat`
+-- Indexes for table `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`kd_chat`);
 
 --
--- Indeks untuk tabel `galeri`
+-- Indexes for table `galeri`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`kd_foto`);
 
 --
--- Indeks untuk tabel `guru`
+-- Indexes for table `guru`
 --
 ALTER TABLE `guru`
   ADD PRIMARY KEY (`kd_guru`);
 
 --
--- Indeks untuk tabel `jawaban`
+-- Indexes for table `guru_mapel`
+--
+ALTER TABLE `guru_mapel`
+  ADD PRIMARY KEY (`kd_gm`);
+
+--
+-- Indexes for table `jawaban`
 --
 ALTER TABLE `jawaban`
   ADD PRIMARY KEY (`kd_jawaban`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`kd_kelas`);
 
 --
--- Indeks untuk tabel `mapel`
+-- Indexes for table `mapel`
 --
 ALTER TABLE `mapel`
   ADD PRIMARY KEY (`kd_mapel`),
   ADD UNIQUE KEY `nama_mapel` (`nama_mapel`);
 
 --
--- Indeks untuk tabel `materi`
+-- Indexes for table `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`kd_materi`);
 
 --
--- Indeks untuk tabel `nilai_siswa`
+-- Indexes for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
   ADD PRIMARY KEY (`kd_nilai`);
 
 --
--- Indeks untuk tabel `semester`
+-- Indexes for table `semester`
 --
 ALTER TABLE `semester`
   ADD PRIMARY KEY (`kd_semester`);
 
 --
--- Indeks untuk tabel `siswa`
+-- Indexes for table `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`kd_siswa`),
   ADD UNIQUE KEY `nis` (`nis`);
 
 --
--- Indeks untuk tabel `tugas`
+-- Indexes for table `tugas`
 --
 ALTER TABLE `tugas`
   ADD PRIMARY KEY (`kd_tugas`);
 
 --
--- Indeks untuk tabel `wali_kelas`
+-- Indexes for table `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
   ADD PRIMARY KEY (`kd_wali`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `kd_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `chat`
+-- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
   MODIFY `kd_chat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `galeri`
+-- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
   MODIFY `kd_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `guru`
+-- AUTO_INCREMENT for table `guru`
 --
 ALTER TABLE `guru`
-  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `kd_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `jawaban`
+-- AUTO_INCREMENT for table `guru_mapel`
+--
+ALTER TABLE `guru_mapel`
+  MODIFY `kd_gm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `jawaban`
 --
 ALTER TABLE `jawaban`
-  MODIFY `kd_jawaban` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `kd_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `mapel`
+-- AUTO_INCREMENT for table `mapel`
 --
 ALTER TABLE `mapel`
-  MODIFY `kd_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `kd_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `materi`
+-- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `kd_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai_siswa`
+-- AUTO_INCREMENT for table `nilai_siswa`
 --
 ALTER TABLE `nilai_siswa`
-  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=489;
+  MODIFY `kd_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT untuk tabel `semester`
+-- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
   MODIFY `kd_semester` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `siswa`
+-- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `kd_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `kd_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `tugas`
+-- AUTO_INCREMENT for table `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `kd_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kd_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `wali_kelas`
+-- AUTO_INCREMENT for table `wali_kelas`
 --
 ALTER TABLE `wali_kelas`
   MODIFY `kd_wali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

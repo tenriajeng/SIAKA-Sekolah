@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql    = "INSERT INTO mapel (kd_kelas,nama_mapel) VALUES ('$kelas','$mapel')";
     $result = mysqli_query($db, $sql);
     if ($result == 1) {
-        // echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
+        echo "<script>alert('Berhasil di Simpan');history.go(-2);</script>";
     } else {
         echo $sql;
     }
