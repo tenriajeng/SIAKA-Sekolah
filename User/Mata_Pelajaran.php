@@ -113,7 +113,6 @@
                                                 <td>
                                                 <?php 
                                                     echo $row['nama_mapel']." ";
-                                                    echo $row['nama_kelas'];
                                                 ?>
                                                 </td>
                                                 <td>

@@ -2,6 +2,7 @@
     session_start();
     $user = $_SESSION['kd'];
     include "Config/Connection.php";
+    $kdk = $_SESSION['kdk'];
     
     if($_SESSION['login_user']=='')
     header("location: index.php");
@@ -100,13 +101,18 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
+                                    // $sql = "SELECT mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
+                                    // FROM siswa 
+                                    // INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa = siswa.kd_siswa 
+                                    // INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
+                                    // INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
+                                    // WHERE siswa.kd_siswa = $user AND semester.nm_semester = $jml ORDER BY mapel.nama_mapel ASC";
+                                    $sql= "SELECT nilai_siswa.kd_nilai,siswa.kd_siswa,mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
                                     FROM siswa 
                                     INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa = siswa.kd_siswa 
                                     INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
                                     INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
-                                    WHERE siswa.kd_siswa = $user AND semester.nm_semester = $jml ORDER BY mapel.nama_mapel ASC";
-                                    
+                                    WHERE siswa.kd_siswa = $user AND semester.nm_semester = $jml AND mapel.kd_kelas = $kdk ORDER BY mapel.nama_mapel ASC";
                                     $result=mysqli_query($db,$sql);
                                     $a=1;
                                     while ($row=mysqli_fetch_array($result)){

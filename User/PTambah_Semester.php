@@ -7,11 +7,12 @@ $result = mysqli_query($db, $sql);
 $row = mysqli_fetch_array($result);
 $sms= $row['MAX(kd_semester)'];
 $sms++;
-for($kdm=0;$kdm<=18;$kdm++){
+for($kdm=0;$kdm<100;$kdm++){
     $sql = "INSERT INTO nilai_siswa(kd_siswa, kd_mapel, nilai, kd_semester) VALUES ('$kd',$kdm,'0','$sms')";
     $result = mysqli_query($db, $sql);
     
     
 }
 echo "<script>alert('Berhasil di Tambahkan');history.go(-1);</script>";
+// echo $sql;
 ?>
