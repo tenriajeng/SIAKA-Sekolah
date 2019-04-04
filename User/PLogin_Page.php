@@ -53,7 +53,7 @@
                header("location: Dashboard.php");
             }
             if($mylevel=="guru"){
-               header("location: Nilai_siswaG.php");
+               header("location: DashboardG.php");
             }
             if($mylevel=="siswa"){
                header("location: Nilai_siswa.php");

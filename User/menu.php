@@ -115,6 +115,12 @@ $foto = $_SESSION['foto'];
                 if($_SESSION['level_user']=="guru"){
                     ?>
                     <li class="nav-item single-item">
+                        <a href="DashboardG.php">
+                            <i class="ti-home"></i>
+                            <span data-i18n="nav.form-select.main">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item single-item">
                         <a href="Nilai_siswaG.php">
                             <i class="ti-archive"></i>
                                 <span data-i18n="nav.form-select.main">Daftar Siswa </span>
