@@ -80,11 +80,11 @@
                             <div class="card-header">
                                 <h5></h5>
                                 <div class="card-header-right">
-                                <a href="Tambah_Siswa.php">
+                                <!-- <a href="Tambah_Siswa.php">
                                     <button class="btn btn-info btn-info">
                                         <i class="icofont icofont-ui-add"></i>Tambah Siswa
                                     </button>
-                                </a>
+                                </a> -->
                                     <i class="icofont icofont-rounded-down"></i>
                                     <br>
                                 </div>
