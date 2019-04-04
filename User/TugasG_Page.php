@@ -175,6 +175,7 @@ if (isset($_GET['id'])) {
                                             INNER JOIN kelas ON kelas.kd_kelas = jawaban.kd_kelas
                                             INNER JOIN mapel ON mapel.kd_mapel = jawaban.kd_mapel
                                             GROUP BY jawaban.kd_jawaban";
+                                            $sql = "SELECT * FROM jawaban";
                                         $result=mysqli_query($db,$sql);
                                         $a=1;
                                         while ($row=mysqli_fetch_assoc($result)){
