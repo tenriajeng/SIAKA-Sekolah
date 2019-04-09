@@ -216,13 +216,14 @@ if($_SESSION['login_user']=='')
                     
                     while ($row=mysqli_fetch_array($result)){    
                     ?>
-                    <div class="col-md-6 col-xl-3">
+                    <div class="col-md-6 col-xl-2">
                         <div class="card social-widget-card">
                             <a href="Nilai_siswaG.php?id=<?=$row['kd_mapel'];?>">
                             <div class="card-block-big primary">
-                                <h3><?=$row['nama_mapel']?></h3>
+                                <h5  style="color: blue;"><?=$row['nama_mapel']?></h5>
                                 <!-- <span class="m-t-10"></span> -->
                                 <!-- <i class="icofont icofont-social-facebook"></i> -->
+
                             </div>
                             </a>
                         </div>

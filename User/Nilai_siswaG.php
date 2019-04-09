@@ -5,9 +5,7 @@
     if($_SESSION['login_user']=='')
     header("location: index.php");
 
-    if (isset($_GET['id'])) {
-        $kd = $_GET['id'];
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,17 +102,19 @@
                                         
                                             
                                             <?php
-                                            // $sql = "SELECT siswa.kd_siswa,siswa.nis,siswa.nama,siswa.alamat,siswa.jns_kelamin,kelas.nama_kelas FROM siswa 
-                                            //         INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas";
+                                            $sql = "SELECT siswa.kd_siswa,siswa.nis,siswa.nama,siswa.alamat,siswa.jns_kelamin,kelas.nama_kelas FROM siswa 
+                                                    INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas";
+                                            if (isset($_GET['id'])) {
+                                                $kd = $_GET['id'];
 
-                                            $sql = "SELECT 
-                                            siswa.kd_siswa,siswa.nis,siswa.nama,siswa.alamat,
-                                            siswa.jns_kelamin,kelas.nama_kelas,mapel.nama_mapel
-                                            FROM siswa 
-                                            INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas
-                                            INNER JOIN mapel ON mapel.kd_kelas = siswa.kd_kelas
-                                            WHERE mapel.kd_mapel = $kd";
-                                            
+                                                $sql = "SELECT 
+                                                siswa.kd_siswa,siswa.nis,siswa.nama,siswa.alamat,
+                                                siswa.jns_kelamin,kelas.nama_kelas,mapel.nama_mapel
+                                                FROM siswa 
+                                                INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas
+                                                INNER JOIN mapel ON mapel.kd_kelas = siswa.kd_kelas
+                                                WHERE mapel.kd_mapel = $kd";
+                                            }
                                             $result=mysqli_query($db,$sql);
                                             $a=1;
                                             while ($row=mysqli_fetch_array($result)){    
