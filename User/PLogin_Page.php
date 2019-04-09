@@ -60,8 +60,8 @@
 
             }
          }else {
-            // echo "<script>alert('Data Yang Dimasukkan Salah');history.go(-1);</script>";
-            echo  $myusername;
+            echo "<script>alert('Data Yang Dimasukkan Salah');history.go(-1);</script>";
+            // echo  $myusername;
          }
       }
       

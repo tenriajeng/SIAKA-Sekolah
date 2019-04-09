@@ -106,7 +106,6 @@
                                                     INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas";
                                             if (isset($_GET['id'])) {
                                                 $kd = $_GET['id'];
-
                                                 $sql = "SELECT 
                                                 siswa.kd_siswa,siswa.nis,siswa.nama,siswa.alamat,
                                                 siswa.jns_kelamin,kelas.nama_kelas,mapel.nama_mapel
