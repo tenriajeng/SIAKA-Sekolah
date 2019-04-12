@@ -101,7 +101,12 @@ if (isset($_GET['id'])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $sql = "SELECT kd_tugas,nama_tugas,nama_file FROM tugas";
+                                            $jumlahmapel = count($_SESSION['kd_mapel']);
+                                            for ($i=0; $i < $jumlahmapel; $i++) { 
+                                                $n[$i] = $_SESSION['kd_mapel'][$i];
+                                                $kd_mapel = $n[$i];
+                                        $sql = "SELECT kd_tugas,nama_tugas,nama_file FROM tugas
+                                        WHERE kd_mapel=$kd_mapel";
                                         $result=mysqli_query($db,$sql);
                                         $a=1;
                                         while ($row=mysqli_fetch_assoc($result)){
@@ -133,6 +138,7 @@ if (isset($_GET['id'])) {
                                                 </tr>
                                                 <?php
                                     }
+                                }
                                     ?>
                                         </tbody>
                                     </table>
@@ -141,99 +147,6 @@ if (isset($_GET['id'])) {
                         </div>
                         <!-- Soal -->
 
-                        <!-- jawaban -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Jawaban Tugas</h5>
-                                <div class="card-header-right">
-                                    <i class="icofont icofont-rounded-down"></i>
-                                </div>
-                            </div>
-                            <div class="card-block">
-                                <div class="dt-responsive table-responsive">
-                                    <table id="multi-colum-dt" class="table table-striped table-bordered nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nama</th>
-                                                <th>Tugas</th>
-                                                <th>Link</th>
-                                                <th>Nilai</th>
-                                                <th>Kelas</th>
-                                                <th>Mata Pelajaran</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            // $sql = "SELECT jawaban.kd_jawaban,mapel.nama_mapel,kelas.nama_kelas,siswa.nama,siswa.nis,jawaban.kd_tugas,
-                                            // tugas.nama_tugas,jawaban.kd_kelas,jawaban.link,jawaban.nilai_tugas,jawaban.nama_file
-                                            // FROM jawaban 
-                                            // INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa 
-                                            // INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas 
-                                            // INNER JOIN kelas ON kelas.kd_kelas = jawaban.kd_kelas
-                                            // INNER JOIN mapel ON mapel.kd_mapel = jawaban.kd_mapel
-                                            // GROUP BY jawaban.kd_jawaban";
-                                            $sql = "SELECT jawaban.kd_jawaban, jawaban.link,siswa.nama, jawaban.nama_file, tugas.nama_tugas, kelas.nama_kelas,mapel.nama_mapel, jawaban.nilai_tugas FROM jawaban
-                                            INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas
-                                            INNER JOIN kelas ON kelas.kd_kelas = jawaban.kd_kelas
-                                            INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa
-                                            INNER JOIN mapel ON mapel.kd_mapel = tugas.kd_mapel
-                                            WHERE tugas.kd_kelas = $kdk";
-                                        $result=mysqli_query($db,$sql);
-                                        $a=1;
-                                        while ($row=mysqli_fetch_assoc($result)){
-                                            ?>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <?php echo $a++;?>
-                                                    </th>
-                                                    <td>
-                                                        <?php echo $row['nama'];?>
-
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['nama_tugas'];?>
-                                                    </td>
-                                                    <td>
-                                                    <a href="<?php echo $row['link'];?>"  target="_blank">
-                                                        <?php echo $row['link'];?>
-                                                    </a>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['nilai_tugas'];?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['nama_kelas'];?>
-
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['nama_mapel'];?>
-
-                                                    </td>
-                                                    <td>
-                                                        <a href="file/<?php echo $row['nama_file'];?>">
-                                                            <button class="btn btn-info btn-info">
-                                                                <i class="icofont icofont-download-alt"></i>Unduh
-                                                            </button>
-                                                        </a>
-                                                        <a href='EditN_Page.php?id=<?php echo $row['kd_jawaban'];?>'>
-                                                            <button class="btn btn-warning btn-warning">
-                                                                <i class="icofont icofont-ui-edit"></i>Edit
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                        
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- jawaban -->
                     </div>
                     <!-- Page-body end -->
                 </div>

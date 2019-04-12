@@ -140,6 +140,12 @@ $foto = $_SESSION['foto'];
                             <span data-i18n="nav.form-select.main">Tugas </span>
                          </a>
                     </li>
+                    <li class="nav-item single-item">
+                        <a href="Jawaban_TugasG.php">
+                            <i class="ti-briefcase"></i>
+                            <span data-i18n="nav.form-select.main">Jawaban Tugas </span>
+                         </a>
+                    </li>
                     
                 <li class="nav-item single-item">
                     <a href="Chat.php">

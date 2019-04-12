@@ -3,9 +3,10 @@
     $user = $_SESSION['kd'];
     include "Config/Connection.php";
     if($_SESSION['login_user']=='')
-    header("location: index.php");
+        header("location: index.php");
+    if(isset($_GET['id']))
+        $kd=$_GET['id'];
 
-    $kd=$_GET['id'];
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -156,8 +157,12 @@
                                                 <i class="icofont icofont-add"></i>TAMBAH SEMESTER
                                             </button>
                                         </a>
+                                        <br>
+                                        <br>
+                                            
                                         <?php
                                         }
+
                                         ?>
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -194,13 +199,32 @@
                                                                     <tbody>
                                                                         
                                                                             <?php 
+
+                                                                            // SELECT nilai_siswa.kd_nilai,siswa.kd_siswa,mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
+                                                                            // FROM siswa 
+                                                                            // INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa = siswa.kd_siswa 
+                                                                            // INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
+                                                                            // INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
+                                                                            // WHERE siswa.kd_siswa = 24 AND semester.nm_semester = 1 AND mapel.kd_mapel = 1 ORDER BY mapel.nama_mapel ASC
                                                                             
-                                                                            $sql= "SELECT nilai_siswa.kd_nilai,siswa.kd_siswa,mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
-                                                                            FROM siswa 
-                                                                            INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa = siswa.kd_siswa 
-                                                                            INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
-                                                                            INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
-                                                                            WHERE siswa.kd_siswa = $kd AND semester.nm_semester = $jml AND mapel.kd_kelas = $kelas ORDER BY mapel.nama_mapel ASC";
+                                                                            
+                                                                            if($_SESSION['level_user']=="admin"){
+                                                                                $sql= "SELECT nilai_siswa.kd_nilai,siswa.kd_siswa,mapel.nama_mapel,nilai_siswa.nilai,semester.nm_semester
+                                                                                FROM siswa 
+                                                                                INNER JOIN nilai_siswa ON nilai_siswa.kd_siswa = siswa.kd_siswa 
+                                                                                INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel 
+                                                                                INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
+                                                                                WHERE siswa.kd_siswa = $kd AND semester.nm_semester = $jml AND mapel.kd_kelas = $kelas ORDER BY mapel.nama_mapel ASC";
+                                                                            }else{
+
+                                                                                $sql= "SELECT nilai_siswa.kd_nilai,siswa.kd_siswa, mapel.nama_mapel, nilai_siswa.nilai FROM nilai_siswa
+                                                                                INNER JOIN mapel ON mapel.kd_mapel = nilai_siswa.kd_mapel
+                                                                                INNER JOIN siswa ON siswa.kd_siswa = nilai_siswa.kd_siswa
+                                                                                INNER JOIN semester ON semester.kd_semester = nilai_siswa.kd_semester
+                                                                                INNER JOIN kelas ON kelas.kd_kelas = siswa.kd_kelas
+                                                                                INNER JOIN guru_mapel ON guru_mapel.kd_mapel = nilai_siswa.kd_mapel
+                                                                                WHERE siswa.kd_siswa = $kd AND semester.nm_semester = $jml AND mapel.kd_kelas = $kelas AND guru_mapel.kd_guru = $user";
+                                                                            }
                                                                             $result=mysqli_query($db,$sql);
                                                                             $a=1;
                                                                             while($row=mysqli_fetch_array($result)){

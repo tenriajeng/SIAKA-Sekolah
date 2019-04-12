@@ -211,14 +211,15 @@ if($_SESSION['login_user']=='')
                     $sql = "SELECT guru_mapel.kd_gm,mapel.kd_mapel, mapel.nama_mapel FROM guru_mapel 
                     INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel
                     WHERE guru_mapel.kd_guru = $user";
-
                     $result=mysqli_query($db,$sql);
-                    
+                    $kdmapel;
+                    $nama_mapel;
+                    $a=0;
                     while ($row=mysqli_fetch_array($result)){    
                     ?>
                     <div class="col-md-6 col-xl-2">
                         <div class="card social-widget-card">
-                            <a href="Nilai_siswaG.php?id=<?=$row['kd_mapel'];?>">
+                            <a href="Nilai_siswaG.php?idmapel=<?=$row['kd_mapel'];?>">
                             <div class="card-block-big primary">
                                 <h5  style="color: blue;"><?=$row['nama_mapel']?></h5>
                                 <!-- <span class="m-t-10"></span> -->
@@ -229,7 +230,12 @@ if($_SESSION['login_user']=='')
                         </div>
                     </div>
                     <?php
+                     $kdmapel[$a] = $row['kd_mapel'];
+                     $nama_mapel[$a] = $row['nama_mapel'];
+                     $a++;
                     }
+                        $_SESSION['kd_mapel'] = $kdmapel;
+                        $_SESSION['nama_mapel'] = $nama_mapel;
                     ?>
                 </div>
             </div>
