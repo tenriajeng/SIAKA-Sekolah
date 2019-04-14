@@ -101,13 +101,20 @@ if (isset($_GET['id'])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $u=0;
+                                            // $sql = "SELECT guru_mapel.kd_gm,mapel.kd_mapel, mapel.nama_mapel FROM guru_mapel 
+                                            // INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel
+                                            // WHERE guru_mapel.kd_guru = $user";
+                                            // $result=mysqli_query($db,$sql);
+                                            // $kdmapel;
+                                            // $nama_mapel;
+                                            // $a=0;
+                                            // $u=0;
 
                                             $jumlahmapel = count($_SESSION['kd_mapel']);
                                             for ($i=0; $i < $jumlahmapel; $i++) { 
                                                 $n[$i] = $_SESSION['kd_mapel'][$i];
                                                 $kd_mapel = $n[$i];
-                                            $sql = "SELECT jawaban.nilai_tugas,jawaban.link,jawaban.nama_file,mapel.nama_mapel, siswa.nis,siswa.nama,tugas.nama_tugas FROM jawaban 
+                                            $sql = "SELECT jawaban.kd_jawaban,jawaban.nilai_tugas,jawaban.link,jawaban.nama_file,mapel.nama_mapel, siswa.nis,siswa.nama,tugas.nama_tugas FROM jawaban 
                                             INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa
                                             INNER JOIN mapel ON mapel.kd_mapel = jawaban.kd_mapel
                                             INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas

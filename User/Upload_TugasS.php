@@ -6,7 +6,7 @@
     if($_SESSION['login_user']=='')
     header("location: index.php");
     $kd = $_GET['id'];
-    $sql = "SELECT nama_tugas FROM tugas WHERE kd_tugas = $kd";
+    $sql = "SELECT kd_mapel,nama_tugas FROM tugas WHERE kd_tugas = $kd";
     $s = "SELECT kd_kelas FROM siswa WHERE kd_siswa=$user";
     $result = mysqli_query($db,$sql);
     $rr = mysqli_query($db,$s);
@@ -14,7 +14,9 @@
     $kdk= $d['kd_kelas'];
     while($data = mysqli_fetch_array($result)){
         $nama = $data["nama_tugas"];
+        $kdm = $data["kd_mapel"];
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +106,7 @@
                                             <input type="file" required  name="file" class="form-control">
                                             <input type="hidden" value="<?=$kd;?>" name="kd" class="form-control">
                                             <input type="hidden" value="<?=$kdk;?>" name="kdk" class="form-control">
+                                            <input type="hidden" value="<?=$kdm;?>" name="kdm" class="form-control">
                                             <!-- <input type="file" required  name="file" class="form-control"> -->
                                         </div>
                                     </div>
