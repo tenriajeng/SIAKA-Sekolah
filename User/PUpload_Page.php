@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	);
 
 	$materi = mysqli_real_escape_string($db, $_POST['judul']);
+	$nmguru = mysqli_real_escape_string($db, $_POST['nm_guru']);
 	$kelas = mysqli_real_escape_string($db, $_POST['Kelas']);
 	$mapel = mysqli_real_escape_string($db, $_POST['mapel']);
 	$nama = $_FILES['file']['name'];
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
 		if ($ukuran < 10485760) {
 			move_uploaded_file($file_tmp, 'file/' . $nama);
-			$sql = "INSERT INTO materi (nama_materi, nama_file,kd_kelas,kd_mapel) VALUES('$materi', '$nama','$kelas','$mapel')";
+			$sql = "INSERT INTO materi (Pupload,nama_materi, nama_file,kd_kelas,kd_mapel) VALUES('$nmguru','$materi', '$nama','$kelas','$mapel')";
 			if ($db->query($sql) === TRUE) {
 				echo "<script>alert('Berhasil Di Upload');history.go(-2);</script>";
 			}
