@@ -105,7 +105,7 @@ if (isset($_GET['id'])) {
                                     $sql = "SELECT mapel.nama_mapel,materi.kd_materi,materi.nama_materi,materi.nama_file,guru_mapel.kd_guru FROM guru_mapel 
                                     INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel 
                                     INNER JOIN materi ON materi.kd_mapel = guru_mapel.kd_mapel 
-                                    WHERE guru_mapel.kd_guru = $user GROUP BY guru_mapel.kd_guru";
+                                    WHERE guru_mapel.kd_guru = $user ";
                                     $result=mysqli_query($db,$sql);
                                     $a=1;
                                     while ($row=mysqli_fetch_array($result)){

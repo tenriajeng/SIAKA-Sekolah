@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
                                             for ($i=0; $i < $jumlahmapel; $i++) { 
                                                 $n[$i] = $_SESSION['kd_mapel'][$i];
                                                 $kd_mapel = $n[$i];
-                                            $sql = "SELECT jawaban.nilai_tugas,jawaban.link,jawaban.nama_file,mapel.nama_mapel, siswa.nis,siswa.nama,tugas.nama_tugas FROM jawaban 
+                                            $sql = "SELECT jawaban.kd_jawaban,jawaban.nilai_tugas,jawaban.link,jawaban.nama_file,mapel.nama_mapel, siswa.nis,siswa.nama,tugas.nama_tugas FROM jawaban 
                                             INNER JOIN siswa ON siswa.kd_siswa = jawaban.kd_siswa
                                             INNER JOIN mapel ON mapel.kd_mapel = jawaban.kd_mapel
                                             INNER JOIN tugas ON tugas.kd_tugas = jawaban.kd_tugas
