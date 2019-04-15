@@ -96,13 +96,14 @@ if (isset($_GET['id'])) {
                                     <tr>
                                         <th>#</th>
                                         <th>Materi</th>
+                                        <th>Pengupload</th>
                                         <th>Mata Pelajaran</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT mapel.nama_mapel,materi.kd_materi,materi.nama_materi,materi.nama_file,guru_mapel.kd_guru FROM guru_mapel 
+                                    $sql = "SELECT materi.Pupload,mapel.nama_mapel,materi.kd_materi,materi.nama_materi,materi.nama_file,guru_mapel.kd_guru FROM guru_mapel 
                                     INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel 
                                     INNER JOIN materi ON materi.kd_mapel = guru_mapel.kd_mapel 
                                     WHERE guru_mapel.kd_guru = $user ";
@@ -113,6 +114,7 @@ if (isset($_GET['id'])) {
                                     <tr>
                                         <th scope="row"><?php echo $a++;?></th>
                                         <td><?php echo $row['nama_materi'];?></td>
+                                        <td><?php echo $row['Pupload'];?></td>
                                         <td><?php echo $row['nama_mapel'];?></td>
                                         <td>
                                             <a href="file/<?php echo $row['nama_file'];?>">

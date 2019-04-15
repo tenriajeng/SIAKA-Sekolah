@@ -99,6 +99,7 @@
                                         <label class="col-sm-2 col-form-label">Nama Materi</label>
                                         <div class="col-sm-10">
                                             <input type="text" required oninvalid="this.setCustomValidity('Data Tidak Boleh Kosong')" oninput="setCustomValidity('')" name="judul" class="form-control" placeholder="Nama Materi">
+                                            <input type="hidden" value="<?=$username?>" required name="nm_guru">
                                         </div>
                                     </div>
                                     <div class="form-group row">
