@@ -130,7 +130,9 @@
                                         <select name="mapel" class="form-control">
                                                 <option value="opt1">Pilih Mapel</option>
                                                 <?php
-                                                $sql = "SELECT * FROM mapel ORDER BY nama_mapel ASC";
+                                                $sql = "SELECT mapel.nama_mapel FROM guru_mapel 
+                                                INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel
+                                                WHERE guru_mapel.kd_guru = $user ORDER BY mapel.nama_mapel ASC";
                                                 $result = mysqli_query($db,$sql);
                                                 while($row=mysqli_fetch_array($result)){
                                                     ?>
