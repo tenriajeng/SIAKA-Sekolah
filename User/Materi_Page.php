@@ -83,12 +83,13 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Materi</th>
+                                        <th>Pengupload</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT materi.nama_materi,materi.nama_file,materi.kd_kelas,mapel.nama_mapel
+                                    $sql = "SELECT materi.Pupload,materi.nama_materi,materi.nama_file,materi.kd_kelas,mapel.nama_mapel
                                     FROM materi
                                     INNER JOIN mapel ON mapel.kd_mapel = materi.kd_mapel
                                     WHERE materi.kd_kelas = $kdk";
@@ -99,6 +100,7 @@
                                     <tr>
                                         <th scope="row"><?php echo $a++;?></th>
                                         <td><?php echo $row['nama_materi'];?></td>
+                                        <td><?php echo $row['Pupload'];?></td>
                                         <td>
                                             <a href="file/<?php echo $row['nama_file'];?>">
                                                 <button class="btn btn-info btn-outline-info">
