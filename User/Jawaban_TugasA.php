@@ -70,7 +70,7 @@ if (isset($_GET['id'])) {
                     <!-- Page-header start -->
                     <div class="page-header">
                         <div class="page-header-title">
-                            <h4>Daftar Tugas</h4>
+                            <h4>Daftar Jawaban Tugas</h4>
                         </div>
                     </div>
                     <!-- Page-header end -->
