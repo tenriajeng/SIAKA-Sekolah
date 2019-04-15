@@ -101,7 +101,14 @@ if (isset($_GET['id'])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $u=0;
+                                            // $sql = "SELECT guru_mapel.kd_gm,mapel.kd_mapel, mapel.nama_mapel FROM guru_mapel 
+                                            // INNER JOIN mapel ON mapel.kd_mapel = guru_mapel.kd_mapel
+                                            // WHERE guru_mapel.kd_guru = $user";
+                                            // $result=mysqli_query($db,$sql);
+                                            // $kdmapel;
+                                            // $nama_mapel;
+                                            // $a=0;
+                                            // $u=0;
 
                                             $jumlahmapel = count($_SESSION['kd_mapel']);
                                             for ($i=0; $i < $jumlahmapel; $i++) { 
